@@ -71,8 +71,11 @@ cd xhs_ai_publisher
 ```bash
 pip install -r requirements.txt
 ```
-
-3. **运行程序**
+3. **安装游览器依赖**
+```bash
+playwright install chromium
+```
+4. **运行程序**
 ```bash
 python main.py
 ```

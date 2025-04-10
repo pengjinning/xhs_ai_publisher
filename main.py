@@ -242,13 +242,6 @@ class XiaohongshuUI(QMainWindow):
                 self.image_processor.terminate()
                 self.image_processor.wait()
 
-            # 关闭浏览器
-            if hasattr(self, 'browser_thread') and self.browser_thread.poster:
-                try:
-                    self.browser_thread.poster.close(force=True)
-                except:
-                    pass  # 忽略关闭浏览器时的错误
-
             # 清理资源
             self.images = []
             self.image_list = []

@@ -31,6 +31,19 @@ class VideoProcessThread(QThread):
             self.loop = asyncio.new_event_loop()
             asyncio.set_event_loop(self.loop)
             
+            # 使用事件循环运行异步方法
+            self.loop.run_until_complete(self.async_process())
+            
+        except Exception as e:
+            self.error.emit(str(e))
+        finally:
+            # 关闭事件循环
+            if self.loop:
+                self.loop.close()
+                
+    async def async_process(self):
+        """异步处理视频"""
+        try:
             self.progress.emit("正在解析视频链接...")
             # 调用API
             server = "http://127.0.0.1:8000/xhs/"
@@ -40,23 +53,23 @@ class VideoProcessThread(QThread):
                 "index": [3, 6, 9]
             }
 
-            # 发送请求并处理结果
+            # 使用aiohttp替代同步的requests可能更好，但为了最小修改，这里用异步包装requests
             self.progress.emit("正在获取视频信息...")
-            response = requests.post(server, json=data)
-            result = response.json()
-
-            if 'data' in result:
+            
+            # 将同步请求封装成异步任务
+            response_data = await self.loop.run_in_executor(
+                None, 
+                lambda: requests.post(server, json=data).json()
+            )
+            
+            if 'data' in response_data:
                 self.progress.emit("解析完成，正在处理数据...")
-                self.finished.emit(result['data'])
+                self.finished.emit(response_data['data'])
             else:
-                raise Exception(result.get('message', '未知错误'))
-
+                raise Exception(response_data.get('message', '未知错误'))
+                
         except Exception as e:
             self.error.emit(str(e))
-        finally:
-            # 关闭事件循环
-            if self.loop:
-                self.loop.close()
 
 class DownloadThread(QThread):
     """下载线程"""

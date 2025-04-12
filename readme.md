@@ -119,8 +119,8 @@ python main.py
 
 ## 📞 联系方式
 
-### 可以加我微信，拉进微信群交流，如果有任何问题或者需求，都可以进群沟通
-<img src="images/wechat_qr.jpg" width="200" height="200">
+### 我新建了一个群聊，如果有任何问题或者需求，都可以进群沟通
+<img src="images/wechat_talking.jpg" width="200" height="200">
 
 ### 公众号
 <img src="images/mp_qr.jpg" width="200" height="200">

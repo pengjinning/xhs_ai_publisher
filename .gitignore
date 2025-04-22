@@ -1,0 +1,8 @@
+*.jpg
+__pycache__
+dist
+output
+build/dist
+build/output
+xiaohongshu_cookies.json
+.vscode

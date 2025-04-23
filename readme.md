@@ -123,7 +123,7 @@ python main.py
 <img src="images/wechat_talking.jpg" width="200" height="200">
 
 ### 公众号
-<img src="images/mp_qr.jpg" width="200" height="200">
+<img src="images/mp_qr.png" width="200" height="200">
 
 ---   
 

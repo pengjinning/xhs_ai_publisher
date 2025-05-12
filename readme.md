@@ -119,9 +119,14 @@ python main.py
 
 ## 📞 联系方式
 
+<<<<<<< HEAD
 
 ### 我新建了一个群聊，如果有任何问题或者需求，可以加我拉入群聊
 <img src="images/wechat_qr.jpg" width="200" height="200">
+=======
+### 我新建了一个群聊，如果有任何问题或者需求，都可以进群沟通
+<img src="images/wechat_talking.png" width="200" height="200">
+>>>>>>> 692fb54607b715a3cbab9f6cdc0503c56a936020
 
 ### 公众号
 <img src="images/mp_qr.jpg" width="200" height="200">

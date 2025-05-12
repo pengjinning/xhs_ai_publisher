@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小红书发文助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>✨ 小红书发文助手</h1>
+      <a href="membership.html" class="membership-link" title="会员中心">👑</a>
+    </header>
+    
+    <nav>
+      <button id="home-tab" class="tab-btn active">🏠 主页</button>
+      <button id="tools-tab" class="tab-btn">🧰 工具</button>
+      <button id="settings-tab" class="tab-btn">⚙️ 设置</button>
+    </nav>
+    
+    <main>
+      <!-- 主页 -->
+      <div id="home-page" class="page active">
+        <div class="input-group">
+          <label for="title">标题</label>
+          <input type="text" id="title" placeholder="请输入文章标题">
+        </div>
+        
+        <div class="input-group">
+          <label for="content">内容主题</label>
+          <textarea id="content" placeholder="请输入文章主题或关键词，AI将帮您生成内容"></textarea>
+        </div>
+        
+        <div class="buttons">
+          <button id="generate-btn" class="primary-btn">生成内容</button>
+          <button id="preview-btn" class="secondary-btn">预览发布</button>
+        </div>
+        
+        <div id="result" class="hidden">
+          <h3>生成结果预览</h3>
+          <div id="result-content"></div>
+        </div>
+      </div>
+      
+      <!-- 工具页 -->
+      <div id="tools-page" class="page">
+        <div class="tools-list">
+          <div class="tool-item">
+            <h3>🖼️ 图片处理</h3>
+            <p>处理上传图片，智能优化图片大小和质量</p>
+            <button class="tool-btn">使用工具</button>
+          </div>
+          
+          <div class="tool-item">
+            <h3>📊 数据分析</h3>
+            <p>分析历史文章数据，提供优化建议</p>
+            <button class="tool-btn premium-feature">会员专享</button>
+          </div>
+          
+          <div class="tool-item">
+            <h3>⏱️ 定时发布</h3>
+            <p>设置定时任务，自动发布文章</p>
+            <button class="tool-btn premium-feature">会员专享</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 设置页 -->
+      <div id="settings-page" class="page">
+        <div class="settings-group">
+          <h3>账号设置</h3>
+          <div class="setting-item">
+            <label for="api-key">API密钥</label>
+            <input type="text" id="api-key" placeholder="请输入API密钥">
+          </div>
+          <div class="setting-item">
+            <label for="ai-model">AI模型选择</label>
+            <select id="ai-model">
+              <option value="gpt-3.5">GPT-3.5</option>
+              <option value="gpt-4" data-premium="true">GPT-4 (会员专享)</option>
+              <option value="claude" data-premium="true">Claude (会员专享)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="settings-group">
+          <h3>发布设置</h3>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="auto-login">
+            <label for="auto-login">自动登录</label>
+          </div>
+          <div class="setting-item checkbox">
+            <input type="checkbox" id="save-draft">
+            <label for="save-draft">保存为草稿</label>
+          </div>
+        </div>
+        
+        <button id="save-settings" class="primary-btn">保存设置</button>
+      </div>
+    </main>
+    
+    <footer>
+      <p>小红书发文助手 v1.0.0</p>
+    </footer>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html> 

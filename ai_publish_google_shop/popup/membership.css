@@ -1,0 +1,257 @@
+/* 会员中心样式 */
+
+/* 标题栏样式 */
+header {
+  position: relative;
+}
+
+.back-link {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.back-link:before {
+  content: "←";
+  margin-right: 4px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* 会员内容区域 */
+.membership-main {
+  padding: 0;
+}
+
+section {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* 许可证信息卡片 */
+.license-card {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 15px;
+  position: relative;
+}
+
+.license-type {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.license-type.premium {
+  color: #f39c12;
+}
+
+.license-type.free {
+  color: #3498db;
+}
+
+.license-type.expired {
+  color: #e74c3c;
+}
+
+.license-info {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.license-expiry {
+  font-weight: bold;
+}
+
+.license-key-display {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.license-loading {
+  text-align: center;
+  padding: 15px;
+  color: #7f8c8d;
+}
+
+/* 会员功能列表 */
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.feature-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.feature-icon {
+  font-size: 20px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.feature-info h3 {
+  font-size: 14px;
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+}
+
+.feature-info p {
+  font-size: 12px;
+  margin: 0;
+  color: #7f8c8d;
+  line-height: 1.4;
+}
+
+/* 会员计划 */
+.plans-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.plan-card {
+  flex: 1;
+  min-width: 150px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.plan-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-color: #ddd;
+}
+
+.plan-card.popular {
+  position: relative;
+  border-color: #f39c12;
+}
+
+.plan-card.popular:before {
+  content: "推荐";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #f39c12;
+  color: white;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 10px;
+}
+
+.plan-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.plan-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-bottom: 10px;
+}
+
+.plan-currency {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.plan-interval {
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.plan-description {
+  font-size: 12px;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.plan-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.plan-button:hover {
+  background-color: #2980b9;
+}
+
+.plan-loading {
+  text-align: center;
+  padding: 15px;
+  color: #7f8c8d;
+}
+
+/* 激活码输入 */
+.license-input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#license-key {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.license-note {
+  font-size: 12px;
+  color: #7f8c8d;
+  margin-top: 10px;
+} 

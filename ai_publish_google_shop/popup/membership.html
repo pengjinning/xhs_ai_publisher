@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会员中心 - 小红书发文助手</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="membership.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>✨ 会员中心</h1>
+      <a href="popup.html" class="back-link">返回</a>
+    </header>
+    
+    <main class="membership-main">
+      <section class="license-info">
+        <h2>当前会员状态</h2>
+        <div id="current-license" class="license-card">
+          <div class="license-loading">加载中...</div>
+        </div>
+      </section>
+      
+      <section class="premium-features">
+        <h2>会员专享功能</h2>
+        <ul class="features-list">
+          <li class="feature-item">
+            <span class="feature-icon">🚀</span>
+            <div class="feature-info">
+              <h3>高级AI模型</h3>
+              <p>使用最新GPT-4等高级AI模型，生成更优质内容</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon">📚</span>
+            <div class="feature-info">
+              <h3>批量内容生成</h3>
+              <p>一次生成多篇文章，节省创作时间</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon">🏷️</span>
+            <div class="feature-info">
+              <h3>智能标签生成</h3>
+              <p>根据内容自动推荐热门标签，提高曝光率</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon">📊</span>
+            <div class="feature-info">
+              <h3>数据分析</h3>
+              <p>分析小红书热门内容趋势，优化创作方向</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <span class="feature-icon">📝</span>
+            <div class="feature-info">
+              <h3>高级模板</h3>
+              <p>使用专业模板快速创建各类爆款内容</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+      
+      <section class="plans-section">
+        <h2>会员计划</h2>
+        <div id="membership-plans" class="plans-container">
+          <div class="plan-loading">加载会员计划中...</div>
+        </div>
+      </section>
+      
+      <section class="license-input-section">
+        <h2>已有会员?</h2>
+        <div class="license-input-container">
+          <input type="text" id="license-key" placeholder="请输入会员激活码">
+          <button id="activate-btn" class="primary-btn">激活</button>
+        </div>
+        <p class="license-note">激活码是您购买会员后获得的字母和数字组合，形如 XXXX-XXXX-XXXX-XXXX</p>
+      </section>
+    </main>
+    
+    <footer>
+      <p>如有问题请联系: support@yourdomain.com</p>
+    </footer>
+  </div>
+  
+  <script src="membership.js"></script>
+</body>
+</html> 

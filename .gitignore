@@ -5,4 +5,5 @@ build/dist
 build/output
 xiaohongshu_cookies.json
 .vscode
+./ai_publish_google_shop
 ./ai_publish_google_shop/*

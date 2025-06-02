@@ -310,36 +310,334 @@ class XiaohongshuPoster:
             images: 图片路径列表
         """
         await self.ensure_browser()  # 确保浏览器已初始化
-        print("点击发布按钮")
-        # 点击发布按钮
-        await self.page.click(".btn.el-tooltip__trigger.el-tooltip__trigger")
+        
+        try:
+            # 首先导航到创作者中心
+            print("导航到创作者中心...")
+            await self.page.goto("https://creator.xiaohongshu.com", wait_until="networkidle")
+            await asyncio.sleep(3)
+            
+            # 检查是否需要登录
+            current_url = self.page.url
+            if "login" in current_url:
+                print("需要重新登录...")
+                raise Exception("用户未登录，请先登录")
+            
+            print("点击发布笔记按钮...")
+            # 根据实际HTML结构点击发布按钮
+            publish_selectors = [
+                ".publish-video .btn",  # 根据日志显示这个选择器工作正常
+                "button:has-text('发布笔记')",
+                ".btn:text('发布笔记')",
+                "//div[contains(@class, 'btn')][contains(text(), '发布笔记')]"
+            ]
+            
+            publish_clicked = False
+            for selector in publish_selectors:
+                try:
+                    print(f"尝试发布按钮选择器: {selector}")
+                    await self.page.wait_for_selector(selector, timeout=5000)
+                    await self.page.click(selector)
+                    print(f"成功点击发布按钮: {selector}")
+                    publish_clicked = True
+                    break
+                except Exception as e:
+                    print(f"发布按钮选择器 {selector} 失败: {e}")
+                    continue
+            
+            if not publish_clicked:
+                await self.page.screenshot(path="debug_publish_button.png")
+                raise Exception("无法找到发布按钮")
+            
+            await asyncio.sleep(3)
 
-        # 切换到上传图文
-        await asyncio.sleep(1)
-        tabs = await self.page.query_selector_all(".creator-tab")
-        if len(tabs) > 1:
-            await tabs[1].click()
-        await asyncio.sleep(1)
+            # 切换到上传图文选项卡
+            print("切换到上传图文选项卡...")
+            try:
+                # 等待选项卡加载
+                await self.page.wait_for_selector(".creator-tab", timeout=10000)
+                
+                # 使用JavaScript直接获取第二个选项卡并点击
+                await self.page.evaluate("""
+                    () => {
+                        const tabs = document.querySelectorAll('.creator-tab');
+                        if (tabs.length > 1) {
+                            tabs[1].click();
+                            return true;
+                        }
+                        return false;
+                    }
+                """)
+                print("使用JavaScript方法点击第二个选项卡")
+                
+                await asyncio.sleep(2)
+            except Exception as e:
+                print(f"切换选项卡失败: {e}")
+                await self.page.screenshot(path="debug_tabs.png")
 
-        # 上传图片
-        if images:
-            async with self.page.expect_file_chooser() as fc_info:
-                await self.page.click(".upload-input")
-            file_chooser = await fc_info.value
-            await file_chooser.set_files(images)
-            await asyncio.sleep(1)
+            # 等待页面切换完成
+            await asyncio.sleep(3)
+            # time.sleep(15) # 长时间同步阻塞，应避免，Playwright有自己的等待机制
+            
+            # 上传图片（如果有）
+            print("--- 开始图片上传流程 ---")
+            if images:
+                print("--- 开始图片上传流程 ---")
+                try:
+                    # 等待上传区域关键元素（如上传按钮）出现
+                    print("等待上传按钮 '.upload-button' 出现...")
+                    await self.page.wait_for_selector(".upload-button", timeout=20000) 
+                    await asyncio.sleep(1.5) # 短暂稳定延时
 
-        await asyncio.sleep(3)
-        # 输入标题
-        await self.page.fill(".d-text", title)
+                    upload_success = False
+                    
+                    # --- 首选方法: 点击明确的 "上传图片" 按钮 ---
+                    if not upload_success:
+                        print("尝试首选方法: 点击 '.upload-button'")
+                        try:
+                            button_selector = ".upload-button"
+                            await self.page.wait_for_selector(button_selector, state="visible", timeout=10000)
+                            print(f"按钮 '{button_selector}' 可见，准备点击.")
+                            
+                            async with self.page.expect_file_chooser(timeout=15000) as fc_info:
+                                await self.page.click(button_selector, timeout=7000)
+                                print(f"已点击 '{button_selector}'. 等待文件选择器...")
+                            
+                            file_chooser = await fc_info.value
+                            print(f"文件选择器已出现: {file_chooser}")
+                            await file_chooser.set_files(images)
+                            print(f"已通过文件选择器设置文件: {images}")
+                            upload_success = True
+                            print("✅ 首选方法成功: 点击 '.upload-button' 并设置文件")
+                        except Exception as e:
+                            print(f"❌ 首选方法 (点击 '.upload-button') 失败: {e}")
+                            if self.page: await self.page.screenshot(path="debug_upload_button_click_failed.png")
 
-        # 输入内容
-        print(content)
-        await self.page.fill(".ql-editor", content)
+                    # --- 方法0.5 (新增): 点击拖拽区域的文字提示区 ---
+                    if not upload_success:
+                        print("尝试方法0.5: 点击拖拽提示区域 ( '.wrapper' 或 '.drag-over')")
+                        try:
+                            clickable_area_selectors = [".wrapper", ".drag-over"]
+                            clicked_area_successfully = False
+                            for area_selector in clickable_area_selectors:
+                                try:
+                                    print(f"尝试点击区域: '{area_selector}'")
+                                    await self.page.wait_for_selector(area_selector, state="visible", timeout=5000)
+                                    print(f"区域 '{area_selector}' 可见，准备点击.")
+                                    async with self.page.expect_file_chooser(timeout=10000) as fc_info:
+                                        await self.page.click(area_selector, timeout=5000)
+                                        print(f"已点击区域 '{area_selector}'. 等待文件选择器...")
+                                    file_chooser = await fc_info.value
+                                    print(f"文件选择器已出现 (点击区域 '{area_selector}'): {file_chooser}")
+                                    await file_chooser.set_files(images)
+                                    print(f"已通过文件选择器 (点击区域 '{area_selector}') 设置文件: {images}")
+                                    upload_success = True
+                                    clicked_area_successfully = True
+                                    print(f"✅ 方法0.5成功: 点击区域 '{area_selector}' 并设置文件")
+                                    break 
+                                except Exception as inner_e:
+                                    print(f"尝试点击区域 '{area_selector}' 失败: {inner_e}")
+                            
+                            if not clicked_area_successfully: 
+                                print(f"❌ 方法0.5 (点击拖拽提示区域) 所有内部尝试均失败")
+                                if self.page: await self.page.screenshot(path="debug_upload_all_area_clicks_failed.png")
+                                
+                        except Exception as e: 
+                            print(f"❌ 方法0.5 (点击拖拽提示区域) 步骤发生意外错误: {e}")
+                            if self.page: await self.page.screenshot(path="debug_upload_method0_5_overall_failure.png")
 
-        # 发布
-        await asyncio.sleep(1)
-        # await self.page.click(".el-button.publishBtn")
+                    # --- 方法1 (备选): 直接操作 .upload-input (使用 set_input_files) ---
+                    if not upload_success:
+                        print("尝试方法1: 直接操作 '.upload-input' 使用 set_input_files")
+                        try:
+                            input_selector = ".upload-input"
+                            # 对于 set_input_files，元素不一定需要可见，但必须存在于DOM中
+                            await self.page.wait_for_selector(input_selector, state="attached", timeout=5000)
+                            print(f"找到 '{input_selector}'. 尝试通过 set_input_files 设置文件...")
+                            await self.page.set_input_files(input_selector, files=images, timeout=10000)
+                            print(f"已通过 set_input_files 为 '{input_selector}' 设置文件: {images}")
+                            upload_success = True # 假设 set_input_files 成功即代表文件已选择
+                            print("✅ 方法1成功: 直接通过 set_input_files 操作 '.upload-input'")
+                        except Exception as e:
+                            print(f"❌ 方法1 (set_input_files on '.upload-input') 失败: {e}")
+                            if self.page: await self.page.screenshot(path="debug_upload_input_set_files_failed.png")
+                    
+                    # --- 方法3 (备选): JavaScript直接触发隐藏的input点击 ---
+                    if not upload_success:
+                        print("尝试方法3: JavaScript点击隐藏的 '.upload-input'")
+                        try:
+                            input_selector = ".upload-input"
+                            await self.page.wait_for_selector(input_selector, state="attached", timeout=5000)
+                            print(f"找到 '{input_selector}'. 尝试通过JS点击...")
+                            async with self.page.expect_file_chooser(timeout=10000) as fc_info:
+                                await self.page.evaluate(f"document.querySelector('{input_selector}').click();")
+                                print(f"已通过JS点击 '{input_selector}'. 等待文件选择器...")
+                            file_chooser = await fc_info.value
+                            print(f"文件选择器已出现 (JS点击): {file_chooser}")
+                            await file_chooser.set_files(images)
+                            print(f"已通过文件选择器 (JS点击后) 设置文件: {images}")
+                            upload_success = True
+                            print("✅ 方法3成功: JavaScript点击 '.upload-input' 并设置文件")
+                        except Exception as e:
+                            print(f"❌ 方法3 (JavaScript点击 '.upload-input') 失败: {e}")
+                            if self.page: await self.page.screenshot(path="debug_upload_js_input_click_failed.png")
+
+                    # --- 上传后检查 --- 
+                    if upload_success:
+                        print("图片已通过某种方法设置/点击，进入上传后检查流程，等待处理和预览...")
+                        await asyncio.sleep(7)  # 增加等待时间，等待图片在前端处理和预览
+
+                        upload_check_js = '''
+                            () => {
+                                const indicators = [
+                                    '.img-card', '.image-preview', '.uploaded-image', 
+                                    '.upload-success', '[class*="preview"]', 'img[src*="blob:"]',
+                                    '.banner-img', '.thumbnail', '.upload-display-item',
+                                    '.note-image-item', /*小红书笔记图片项*/
+                                    '.preview-item', /*通用预览项*/
+                                    '.gecko-modal-content img' /* 可能是某种弹窗内的预览 */
+                                ];
+                                let foundVisible = false;
+                                console.log("JS: Checking for upload indicators...");
+                                for (let selector of indicators) {
+                                    const elements = document.querySelectorAll(selector);
+                                    if (elements.length > 0) {
+                                        for (let el of elements) {
+                                            const rect = el.getBoundingClientRect();
+                                            const style = getComputedStyle(el);
+                                            if (rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0') {
+                                                console.log("JS: Found visible indicator:", selector, el);
+                                                foundVisible = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    if (foundVisible) break;
+                                }
+                                console.log("JS: Upload indicator check result (foundVisible):", foundVisible);
+                                return foundVisible;
+                            }
+                        '''
+                        print("执行JS检查图片预览...")
+                        upload_check_successful = await self.page.evaluate(upload_check_js)
+                        
+                        if upload_check_successful:
+                            print("✅ 图片上传并处理成功 (检测到可见的预览元素)")
+                        else:
+                            print("⚠️ 图片可能未成功处理或预览未出现(JS检查失败)，请检查截图")
+                            if self.page: await self.page.screenshot(path="debug_upload_preview_missing_after_js_check.png")
+                    else:
+                        print("❌ 所有主要的图片上传方法均失败。无法进行预览检查。")
+                        if self.page: await self.page.screenshot(path="debug_upload_all_methods_failed_final.png")
+                        
+                except Exception as e:
+                    print(f"整个图片上传过程出现严重错误: {e}")
+                    import traceback
+                    traceback.print_exc() 
+                    if self.page: await self.page.screenshot(path="debug_image_upload_critical_error_outer.png")
+            
+            # 输入标题和内容
+            print("--- 开始输入标题和内容 ---")
+            await asyncio.sleep(5)  # 给更多时间让编辑界面加载
+            # time.sleep(1000) # 已移除
+            # # 尝试查找并点击编辑区域以激活它
+            # try:
+            #     await self.page.click(".editor-wrapper", timeout=5000)
+            #     print("成功点击编辑区域")
+            # except:
+            #     print("尝试点击编辑区域失败")
+            
+            # 输入标题
+            print("输入标题...")
+            try:
+                # 尝试更多可能的标题选择器
+                title_selectors = [
+                    "input.title",
+                    "[data-placeholder='标题']",
+                    "[contenteditable='true']:first-child",
+                    ".note-editor-wrapper input",
+                    ".edit-wrapper input"
+                ]
+                
+                title_filled = False
+                for selector in title_selectors:
+                    try:
+                        print(f"尝试标题选择器: {selector}")
+                        await self.page.wait_for_selector(selector, timeout=5000)
+                        await self.page.fill(selector, title)
+                        print(f"标题输入成功，使用选择器: {selector}")
+                        title_filled = True
+                        break
+                    except Exception as e:
+                        print(f"标题选择器 {selector} 失败: {e}")
+                        continue
+                
+                if not title_filled:
+                    # 尝试使用键盘快捷键输入
+                    try:
+                        await self.page.keyboard.press("Tab")
+                        await self.page.keyboard.type(title)
+                        print("使用键盘输入标题")
+                    except Exception as e:
+                        print(f"键盘输入标题失败: {e}")
+                        print("无法输入标题")
+                    
+            except Exception as e:
+                print(f"标题输入失败: {e}")
+
+            # 输入内容
+            print("输入内容...")
+            try:
+                # 尝试更多可能的内容选择器
+                content_selectors = [
+                    "[contenteditable='true']:nth-child(2)",
+                    ".note-content",
+                    "[data-placeholder='添加正文']",
+                    "[role='textbox']",
+                    ".DraftEditor-root"
+                ]
+                
+                content_filled = False
+                for selector in content_selectors:
+                    try:
+                        print(f"尝试内容选择器: {selector}")
+                        await self.page.wait_for_selector(selector, timeout=5000)
+                        await self.page.fill(selector, content)
+                        print(f"内容输入成功，使用选择器: {selector}")
+                        content_filled = True
+                        break
+                    except Exception as e:
+                        print(f"内容选择器 {selector} 失败: {e}")
+                        continue
+                
+                if not content_filled:
+                    # 尝试使用键盘快捷键输入
+                    try:
+                        await self.page.keyboard.press("Tab")
+                        await self.page.keyboard.press("Tab")
+                        await self.page.keyboard.type(content)
+                        print("使用键盘输入内容")
+                    except Exception as e:
+                        print(f"键盘输入内容失败: {e}")
+                        print("无法输入内容")
+                    
+            except Exception as e:
+                print(f"内容输入失败: {e}")
+
+            # 等待用户手动发布
+            print("请手动检查内容并点击发布按钮完成发布...")
+            await asyncio.sleep(60) # 延长等待时间，给用户充分时间检查
+            
+        except Exception as e:
+            print(f"发布文章时出错: {str(e)}")
+            # 截图用于调试
+            try:
+                if self.page: # Check if page object exists before screenshot
+                    await self.page.screenshot(path="error_screenshot.png")
+                    print("已保存错误截图: error_screenshot.png")
+            except:
+                pass # Ignore screenshot errors
+            raise
 
     async def close(self, force=False):
         """关闭浏览器
@@ -365,3 +663,39 @@ class XiaohongshuPoster:
         """确保浏览器已初始化"""
         if not self.playwright:
             await self.initialize()
+
+
+if __name__ == "__main__":
+    async def main():
+        poster = XiaohongshuPoster()
+        try:
+            print("开始初始化...")
+            await poster.initialize()
+            print("初始化完成")
+            
+            print("开始登录...")
+            await poster.login("18810788888", "+86")
+            print("登录完成")
+            
+            print("开始发布文章...")
+            await poster.post_article("测试文章", "这是一个测试内容，用于验证自动发布功能。", [r"C:\Users\Administrator\Pictures\506d9fc834d786df28971fdfa27f5ae7.jpg"])  # 提供图片路径
+            print("文章发布流程完成")
+            
+        except Exception as e:
+            print(f"程序执行出错: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            # 截图调试
+            try:
+                if poster.page: # Check if page object exists before screenshot
+                    await poster.page.screenshot(path="error_debug.png")
+                    print("已保存错误截图: error_debug.png")
+            except:
+                pass # Ignore screenshot errors
+        finally:
+            print("等待10秒后关闭浏览器...")
+            await asyncio.sleep(10)
+            await poster.close(force=True)
+            print("程序结束")
+    
+    asyncio.run(main())

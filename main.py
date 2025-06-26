@@ -13,6 +13,7 @@ from src.core.browser import BrowserThread
 from src.core.pages.home import HomePage
 from src.core.pages.setting import SettingsPage
 from src.core.pages.tools import ToolsPage
+from src.core.pages.user_management import UserManagementPage
 from src.logger.logger import Logger
 
 # 设置日志文件路径
@@ -135,19 +136,28 @@ class XiaohongshuUI(QMainWindow):
         home_btn.setChecked(True)
         home_btn.clicked.connect(lambda: self.switch_page(0))
 
+        # 添加用户管理按钮
+        user_btn = QPushButton("👤")
+        user_btn.setCheckable(True)
+        user_btn.clicked.connect(lambda: self.switch_page(1))
+
         # 添加工具箱按钮
         tools_btn = QPushButton("🧰")
         tools_btn.setCheckable(True)
-        tools_btn.clicked.connect(lambda: self.switch_page(1))
+        tools_btn.clicked.connect(lambda: self.switch_page(2))
 
         settings_btn = QPushButton("⚙️")
         settings_btn.setCheckable(True)
-        settings_btn.clicked.connect(lambda: self.switch_page(2))
+        settings_btn.clicked.connect(lambda: self.switch_page(3))
 
         sidebar_layout.addWidget(home_btn)
+        sidebar_layout.addWidget(user_btn)
         sidebar_layout.addWidget(tools_btn)
         sidebar_layout.addWidget(settings_btn)
         sidebar_layout.addStretch()
+
+        # 存储按钮引用以便切换状态
+        self.sidebar_buttons = [home_btn, user_btn, tools_btn, settings_btn]
 
         # 添加侧边栏到主布局
         main_layout.addWidget(sidebar)
@@ -156,15 +166,20 @@ class XiaohongshuUI(QMainWindow):
         self.stack = QStackedWidget()
         main_layout.addWidget(self.stack)
 
-        # 创建并添加三个页面
+        # 创建并添加页面
         self.home_page = HomePage(self)
+        self.user_management_page = UserManagementPage(self)
         self.tools_page = ToolsPage(self)
         self.settings_page = SettingsPage(self)
 
         # 将页面添加到堆叠窗口
         self.stack.addWidget(self.home_page)
-        self.stack.insertWidget(1, self.tools_page)
+        self.stack.addWidget(self.user_management_page)
+        self.stack.addWidget(self.tools_page)
         self.stack.addWidget(self.settings_page)
+
+        # 连接用户管理页面的信号
+        self.user_management_page.user_switched.connect(self.on_user_switched)
 
         # 创建浏览器线程
         self.browser_thread = BrowserThread()
@@ -213,15 +228,21 @@ class XiaohongshuUI(QMainWindow):
             preview_btn.setEnabled(enabled)
 
     def switch_page(self, index):
-        # 切换页面
+        """切换页面"""
         self.stack.setCurrentIndex(index)
-
+        
         # 更新按钮状态
-        sidebar = self.findChild(QWidget, "sidebar")
-        if sidebar:
-            buttons = [btn for btn in sidebar.findChildren(QPushButton)]
-            for i, btn in enumerate(buttons):
-                btn.setChecked(i == index)
+        for i, btn in enumerate(self.sidebar_buttons):
+            btn.setChecked(i == index)
+    
+    def on_user_switched(self, user_id):
+        """处理用户切换事件"""
+        try:
+            self.logger.info(f"用户已切换到ID: {user_id}")
+            # 这里可以添加用户切换后的其他处理逻辑
+            # 比如重新加载用户相关的配置、重置浏览器状态等
+        except Exception as e:
+            self.logger.error(f"处理用户切换失败: {str(e)}")
 
     def closeEvent(self, event):
         print("关闭应用")
@@ -257,80 +278,98 @@ class XiaohongshuUI(QMainWindow):
             event.accept()
             
     def start_downloader_thread(self):
-        """启动下载器线程"""
+        """启动Chrome下载器线程"""
         try:
-            import subprocess
             import threading
             
-            def run_downloader():
-                downloader_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src/bin/XhsAiDownloader')
-                if sys.platform == "win32":
-                    downloader_path += ".exe"
+            def download_chrome():
+                """使用Playwright下载Chrome浏览器"""
+                try:
+                    self.logger.info("🔍 检查Chrome浏览器...")
                     
-                if os.path.exists(downloader_path):
+                    # 尝试导入playwright
                     try:
-                        # 重定向标准输出和错误输出到 /dev/null 或 NUL
-                        if sys.platform == "win32":
-                            # 使用 start /b 命令在后台运行,避免弹出命令行窗口
-                            subprocess.Popen(f"start /b {downloader_path} server", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                        else:
-                            subprocess.Popen(f"{downloader_path} server > /dev/null 2>&1", shell=True)
-                        self.logger.success("下载器启动成功") 
-                    except Exception as e:
-                        self.logger.error(f"下载器启动失败: {str(e)}")
-                else:
-                    self.logger.error(f"下载器文件不存在: {downloader_path}")
+                        from playwright.sync_api import sync_playwright
+                        self.logger.info("✅ Playwright已安装")
+                    except ImportError:
+                        self.logger.error("❌ Playwright未安装，请运行: pip install playwright")
+                        self.logger.info("💡 浏览器功能将不可用，但不影响其他功能的正常使用")
+                        return
+                    
+                    # 检查Chrome是否已安装
+                    with sync_playwright() as p:
+                        try:
+                            # 尝试启动Chrome来检查是否已安装
+                            browser = p.chromium.launch(headless=True)
+                            browser.close()
+                            self.logger.success("✅ Chrome浏览器已可用")
+                            return
+                        except Exception as e:
+                            if "Executable doesn't exist" in str(e) or "找不到" in str(e):
+                                self.logger.info("🔄 Chrome浏览器未安装，正在下载...")
+                                
+                                # 下载Chrome浏览器
+                                import subprocess
+                                import sys
+                                
+                                # 使用playwright install命令下载Chrome
+                                try:
+                                    self.logger.info("📥 正在下载Chrome浏览器，请稍候...")
+                                    result = subprocess.run(
+                                        [sys.executable, "-m", "playwright", "install", "chromium"],
+                                        capture_output=True,
+                                        text=True,
+                                        timeout=300  # 5分钟超时
+                                    )
+                                    
+                                    if result.returncode == 0:
+                                        self.logger.success("✅ Chrome浏览器下载完成")
+                                        
+                                        # 再次验证安装
+                                        with sync_playwright() as p2:
+                                            try:
+                                                browser = p2.chromium.launch(headless=True)
+                                                browser.close()
+                                                self.logger.success("✅ Chrome浏览器验证成功")
+                                            except Exception as verify_error:
+                                                self.logger.error(f"❌ Chrome浏览器验证失败: {str(verify_error)}")
+                                    else:
+                                        self.logger.error(f"❌ Chrome浏览器下载失败: {result.stderr}")
+                                        self.logger.info("💡 您可以手动运行: python -m playwright install chromium")
+                                        
+                                except subprocess.TimeoutExpired:
+                                    self.logger.error("❌ Chrome浏览器下载超时")
+                                    self.logger.info("💡 请检查网络连接，或手动运行: python -m playwright install chromium")
+                                except Exception as download_error:
+                                    self.logger.error(f"❌ Chrome浏览器下载出错: {str(download_error)}")
+                                    self.logger.info("💡 请手动运行: python -m playwright install chromium")
+                            else:
+                                self.logger.error(f"❌ Chrome浏览器检查失败: {str(e)}")
+                                
+                except Exception as e:
+                    self.logger.error(f"❌ Chrome下载器出错: {str(e)}")
+                    self.logger.info("💡 浏览器功能将不可用，但不影响其他功能的正常使用")
                     
             # 创建并启动线程
-            self.downloader_thread = threading.Thread(target=run_downloader, daemon=True)
+            self.downloader_thread = threading.Thread(target=download_chrome, daemon=True)
             self.downloader_thread.start()
             
         except Exception as e:
-            self.logger.error(f"启动下载器线程时出错: {str(e)}")
+            self.logger.error(f"❌ 启动Chrome下载器线程时出错: {str(e)}")
             
     def stop_downloader(self):
-        """关闭下载器"""
+        """停止下载器（现在主要是清理资源）"""
         try:
-            if sys.platform == "win32":
-                # Windows系统使用netstat和taskkill命令
-                import subprocess
-                cmd = 'netstat -ano | findstr :8000'
-                try:
-                    result = subprocess.check_output(cmd, shell=True).decode()
-                    if result:
-                        # 提取PID
-                        pid = result.strip().split()[-1]
-                        kill_cmd = f'taskkill /F /PID {pid}'
-                        subprocess.check_output(kill_cmd, shell=True)
-                        self.logger.success("Windows下载器关闭成功")
-                except Exception as e:
-                    self.logger.error(f"Windows下载器关闭失败: {str(e)}")
-            else:
-                # Linux/Mac系统使用lsof和ps命令
-                import subprocess
-                try:
-                    # 先尝试使用ps命令查找XhsAiDownloader进程
-                    ps_cmd = "ps aux | grep XhsAiDownloader | grep -v grep | awk '{print $2}'"
-                    pids = subprocess.check_output(ps_cmd, shell=True).decode().strip().split('\n')
-                    
-                    if not pids or not pids[0]:
-                        # 如果ps命令没找到,再尝试用lsof查找8000端口
-                        cmd = "lsof -i :8000 -t"
-                        pids = subprocess.check_output(cmd, shell=True).decode().strip().split('\n')
-                        
-                    if pids and pids[0]:
-                        # 终止所有相关进程
-                        kill_cmd = f"kill -9 {' '.join(pids)}"
-                        subprocess.check_output(kill_cmd, shell=True)
-                        self.logger.success("Mac下载器关闭成功")
-                    else:
-                        self.logger.warning("未找到需要关闭的下载器进程")
-                except Exception as e:
-                    pass
-                    # self.logger.error(f"Mac下载器关闭失败: {str(e)}")
-                    
+            # 由于我们不再启动服务器进程，这里主要是清理资源
+            self.logger.info("ℹ️ 清理浏览器资源")
+            
+            # 如果有正在运行的下载线程，等待其完成
+            if hasattr(self, 'downloader_thread') and self.downloader_thread.is_alive():
+                self.logger.info("ℹ️ 等待Chrome下载完成...")
+                # 不强制终止下载线程，让它自然完成
+                
         except Exception as e:
-            self.logger.error(f"关闭下载器时出错: {str(e)}")
+            self.logger.warning(f"⚠️ 清理浏览器资源时出现问题: {str(e)}")
 
 
 if __name__ == "__main__":

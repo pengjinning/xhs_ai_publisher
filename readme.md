@@ -1,134 +1,420 @@
-# 小红书发文助手
+# 🌟 小红书AI发布助手
 
 <div align="center">
 
-[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
-[![Version](https://img.shields.io/badge/version-1.0.0-orange.svg)](https://github.com/yourusername/xhs_ai_publisher/releases)
+<img src="https://img.shields.io/badge/🐍_Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Version"/>
+<img src="https://img.shields.io/badge/📄_License-Apache_2.0-4CAF50?style=for-the-badge&logo=apache&logoColor=white" alt="License"/>
+<img src="https://img.shields.io/badge/💻_Platform-Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Platform"/>
+<img src="https://img.shields.io/badge/🚀_Version-2.0.0-FF6B35?style=for-the-badge&logo=rocket&logoColor=white" alt="Version"/>
 
-[简体中文](./readme.md) | [English](./readme_en.md)
+<br/>
 
-</div>
+<img src="https://img.shields.io/badge/🎯_Status-Active-28A745?style=flat-square" alt="Status"/>
+<img src="https://img.shields.io/badge/⭐_Stars-Welcome-FFD700?style=flat-square" alt="Stars"/>
+<img src="https://img.shields.io/badge/🤝_Contributors-Welcome-8A2BE2?style=flat-square" alt="Contributors"/>
 
-## ✨ 项目简介
+<br/><br/>
 
-`xhs_ai_publisher` 是一个基于 Python 的自动化工具，专为小红书平台内容创作者设计。该项目结合了图形用户界面与自动化脚本，利用大模型技术生成内容，并通过浏览器自动登录和发布文章，旨在简化内容创作与发布流程。
+<h3>🎨 智能内容创作 • 🤖 AI驱动 • 📱 一键发布</h3>
+
+[🇨🇳 简体中文](./readme.md) | [🇺🇸 English](./readme_en.md)
+
+<br/>
 
 ![软件界面效果](./images/ui.png)
 
-## 🚀 功能特点
+</div>
 
-- **智能内容生成**：利用大模型技术自动生成文章标题和内容
-- **图片智能处理**：自动下载并预览封面图和内容图片
-- **便捷登录**：支持手机号登录，自动保存登录凭证
-- **一键发布**：支持文章预览和自动发布
-- **用户友好界面**：简洁直观的图形界面操作
-- **定时发布**：支持定时任务，自动发布文章
+---
 
-## 📁 项目结构
+## 📖 项目简介
+
+> **小红书AI发布助手** 是一个功能强大的自动化内容创作与发布工具，专为小红书平台的内容创作者量身定制。
+
+🎯 **核心价值**
+- 🧠 **智能创作**：基于先进AI技术，自动生成高质量内容
+- ⚡ **效率提升**：一键操作，节省90%的发布时间
+- 🎨 **专业品质**：精美界面设计，用户体验极佳
+- 🔧 **功能完整**：从内容生成到发布，全流程自动化
+
+---
+
+## ✨ 核心功能
+
+<table>
+<tr>
+<td width="50%">
+
+### 🤖 AI智能生成
+- 🎯 **智能标题**：AI生成吸引人的标题
+- 📝 **内容创作**：基于主题自动生成文章
+- 🖼️ **图片处理**：智能匹配和处理图片
+- 🏷️ **标签推荐**：自动推荐热门标签
+
+</td>
+<td width="50%">
+
+### 🚀 自动化发布
+- 📱 **一键登录**：支持手机号快速登录
+- 📋 **内容预览**：发布前完整预览效果
+- ⏰ **定时发布**：支持定时任务发布
+- 💾 **状态保存**：自动保存登录状态
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 👥 用户管理
+- 🔄 **多账户**：支持多个小红书账户管理
+- 🌐 **代理配置**：支持代理服务器配置
+- 🔍 **浏览器指纹**：防检测浏览器指纹
+- 📊 **数据统计**：发布数据统计分析
+
+</td>
+<td width="50%">
+
+### 🛡️ 安全稳定
+- 🔐 **数据加密**：本地数据安全加密存储
+- 🛡️ **反检测**：先进的反检测技术
+- 📝 **日志记录**：完整的操作日志记录
+- 🔄 **错误恢复**：智能错误处理和恢复
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📁 项目架构
 
 ```
-xhs_ai_publisher/
-├── src/                    # 源代码目录
-│   ├── core/              # 核心功能模块
-│   │   ├── processor/     # 内容处理模块
-│   │   ├── browser/       # 浏览器自动化
-│   │   └── pages/         # 界面页面
-│   ├── cron/              # 定时任务
-│   ├── logger/            # 日志模块
-│   └── config/            # 配置模块
-├── static/                # 静态资源
-├── test/                  # 测试目录
-├── build/                 # 构建输出
-├── main.py                # 主程序入口
-└── requirements.txt       # 依赖包列表
+📦 xhs_ai_publisher/
+├── 📂 src/                          # 🔧 源代码目录
+│   ├── 📂 core/                     # ⚡ 核心功能模块
+│   │   ├── 📂 models/               # 🗄️ 数据模型
+│   │   ├── 📂 services/             # 🔧 业务服务层
+│   │   ├── 📂 pages/                # 🎨 界面页面
+│   │   ├── 📂 browser/              # 🌐 浏览器自动化
+│   │   └── 📂 utils/                # 🛠️ 工具函数
+│   ├── 📂 web/                      # 🌐 Web接口
+│   │   ├── 📂 templates/            # 📄 HTML模板
+│   │   └── 📂 static/               # 🎨 静态资源
+│   └── 📂 logger/                   # 📝 日志系统
+├── 📂 ai_publish_google_shop/       # 🏪 Chrome扩展
+├── 📂 test/                         # 🧪 测试目录
+├── 📂 build/                        # 📦 构建输出
+├── 🐍 main.py                       # 🚀 主程序入口
+├── 📋 requirements.txt              # 📦 依赖包列表
+└── 📖 README.md                     # 📚 项目说明
 ```
 
-## 🛠️ 安装与使用
+---
 
-### 环境要求
+## 🛠️ 快速开始
 
-- Python 3.8+
-- Chrome 浏览器
-- 其他依赖见 requirements.txt
+### 📋 环境要求
 
-## 📋 待办事项
+<div align="center">
 
-- **内容库**：计划添加内容库功能，支持保存和管理多种类型的内容素材
-- **模板库**：开发模板库系统，提供多种预设模板，方便快速创建不同风格的文章
+| 组件 | 版本要求 | 说明 |
+|:---:|:---:|:---:|
+| 🐍 **Python** | `3.9+` | 推荐使用最新版本 |
+| 🌐 **Chrome** | `最新版` | 用于浏览器自动化 |
+| 💾 **内存** | `4GB+` | 推荐8GB以上 |
+| 💿 **磁盘** | `2GB+` | 用于存储依赖和数据 |
 
+</div>
 
-### 安装步骤
+### 🚀 安装步骤
 
-1. **克隆项目**
+<details>
+<summary>📥 <strong>方式一：源码安装（推荐开发者）</strong></summary>
+
 ```bash
+# 1️⃣ 克隆项目
 git clone https://github.com/yourusername/xhs_ai_publisher.git
 cd xhs_ai_publisher
-```
 
-2. **安装依赖**
-```bash
+# 2️⃣ 创建虚拟环境（推荐）
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# 或
+venv\Scripts\activate     # Windows
+
+# 3️⃣ 安装依赖
 pip install -r requirements.txt
-```
-3. **安装游览器依赖**
-```bash
+
+# 4️⃣ 安装浏览器驱动
 playwright install chromium
-```
-4. **运行程序**
-```bash
+
+# 5️⃣ 初始化数据库
+python src/core/database_init.py init
+
+# 6️⃣ 启动程序
 python main.py
 ```
 
-### 使用流程
+</details>
 
-1. 启动程序后，输入手机号登录小红书账户
-2. 在标题编辑区设置文章标题和作者信息
-3. 在内容输入区输入文章主题
-4. 点击"生成内容"按钮生成文章
-5. 预览生成的内容和配图
-6. 确认无误后点击"预览发布"
-
-## 📦 快速使用
-
-如果您不想配置开发环境，可以直接下载打包好的 Windows 可执行程序：
-
-[百度网盘下载链接](https://pan.baidu.com/s/1rIQ-ZgyHYN_ncVXlery4yQ)  
-提取码: iqiy
-
-### 使用说明
-1. 下载并解压压缩包
-2. 运行文件夹中的 `easy_ui.exe`
-3. 按照界面提示操作即可
-
-### 注意事项
-- 仅支持 Windows 系统
-- 首次运行可能需要等待较长时间加载
-- 如遇到杀毒软件报警，请添加信任
-
-## 📝 注意事项
-
-- 确保已安装 Chrome 浏览器，并下载对应版本的 ChromeDriver
-- 登录过程中需要输入验证码，请确保手机畅通
-- 发布文章前，请核对生成的内容和图片，确保符合发布要求
-- 建议定期备份登录凭证和配置文件
-
-## 🤝 贡献指南
-
-欢迎提交 Issue 和 Pull Request 来帮助改进项目。
-
-## 📞 联系方式
-
-
-
-### 我新建了一个群聊，如果有任何问题或者需求，可以加我拉入群聊
-<img src="images/wechat_qr.jpg" width="200" height="200">
-
-### 公众号
-<img src="images/mp_qr.jpg" width="200" height="200">
-
----   
+<details>
+<summary>📦 <strong>方式二：可执行程序（推荐普通用户）</strong></summary>
 
 <div align="center">
-  <sub>Built with ❤️ for Xiaohongshu content creators</sub>
+
+### 🎯 一键下载，即开即用
+
+<a href="https://pan.baidu.com/s/1rIQ-ZgyHYN_ncVXlery4yQ">
+<img src="https://img.shields.io/badge/📥_百度网盘下载-4285F4?style=for-the-badge&logo=googledrive&logoColor=white" alt="百度网盘下载"/>
+</a>
+
+**提取码：** `iqiy`
+
+</div>
+
+**使用步骤：**
+1. 📥 下载并解压压缩包
+2. 🚀 双击运行 `easy_ui.exe`
+3. 🎯 按照界面提示操作即可
+
+**注意事项：**
+- ✅ 仅支持 Windows 10/11 系统
+- ⏱️ 首次运行需要等待加载（约30-60秒）
+- 🛡️ 如遇杀毒软件报警，请添加信任
+
+</details>
+
+---
+
+## 📱 使用指南
+
+### 🎯 基础使用流程
+
+<div align="center">
+
+```mermaid
+flowchart LR
+    A[🚀 启动程序] --> B[📱 登录账户]
+    B --> C[✍️ 输入主题]
+    C --> D[🤖 AI生成内容]
+    D --> E[👀 预览效果]
+    E --> F[📤 一键发布]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+    style E fill:#fce4ec
+    style F fill:#e0f2f1
+```
+
+</div>
+
+### 📝 详细操作步骤
+
+1. **🚀 启动程序**
+   - 运行 `python main.py` 或双击可执行文件
+   - 等待程序加载完成
+
+2. **👤 用户管理**
+   - 点击"用户管理"按钮
+   - 添加新用户或切换现有用户
+   - 配置代理和浏览器指纹（可选）
+
+3. **📱 账户登录**
+   - 输入手机号码
+   - 接收并输入验证码
+   - 系统自动保存登录状态
+
+4. **✍️ 内容创作**
+   - 在主题输入框输入创作主题
+   - 点击"生成内容"按钮
+   - AI自动生成标题和内容
+
+5. **🖼️ 图片处理**
+   - 系统自动匹配相关图片
+   - 可手动上传自定义图片
+   - 支持多图片批量处理
+
+6. **👀 预览发布**
+   - 点击"预览发布"查看效果
+   - 确认内容无误后点击发布
+   - 支持定时发布功能
+
+---
+
+## 🎨 界面预览
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center">
+<img src="./images/main_ui.png" width="300"/>
+<br/>
+<strong>🏠 主界面</strong>
+</td>
+<td align="center">
+<img src="./images/user_management.png" width="300"/>
+<br/>
+<strong>👤 用户管理</strong>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="./images/content_generation.png" width="300"/>
+<br/>
+<strong>🤖 内容生成</strong>
+</td>
+<td align="center">
+<img src="./images/publish_preview.png" width="300"/>
+<br/>
+<strong>📤 发布预览</strong>
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+## 🔧 高级配置
+
+### ⚙️ 配置文件说明
+
+<details>
+<summary>📁 <strong>config.py - 主配置文件</strong></summary>
+
+```python
+# AI配置
+AI_CONFIG = {
+    "model": "gpt-3.5-turbo",
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+
+# 浏览器配置
+BROWSER_CONFIG = {
+    "headless": False,
+    "user_agent": "Mozilla/5.0...",
+    "viewport": {"width": 1920, "height": 1080}
+}
+
+# 发布配置
+PUBLISH_CONFIG = {
+    "auto_publish": False,
+    "delay_range": [3, 8],
+    "max_retry": 3
+}
+```
+
+</details>
+
+### 🌐 代理配置
+
+支持多种代理类型：
+- 🔗 **HTTP代理**
+- 🔒 **HTTPS代理** 
+- 🧅 **SOCKS5代理**
+- 🏠 **本地代理**
+
+---
+
+## 📊 待办事项
+
+<div align="center">
+
+### 🗓️ 开发路线图
+
+</div>
+
+- [x] ✅ **基础功能**：内容生成和发布
+- [x] ✅ **用户管理**：多账户支持
+- [x] ✅ **代理配置**：网络代理支持
+- [ ] 🔄 **内容库**：素材管理系统
+- [ ] 🔄 **模板库**：预设模板系统
+- [ ] 🔄 **数据分析**：发布效果分析
+- [ ] 🔄 **API接口**：开放API接口
+- [ ] 🔄 **移动端**：手机端支持
+
+---
+
+## 🤝 参与贡献
+
+<div align="center">
+
+**🎉 我们欢迎所有形式的贡献！**
+
+<img src="https://img.shields.io/badge/🐛_Bug_Reports-Welcome-FF6B6B?style=for-the-badge" alt="Bug Reports"/>
+<img src="https://img.shields.io/badge/💡_Feature_Requests-Welcome-4ECDC4?style=for-the-badge" alt="Feature Requests"/>
+<img src="https://img.shields.io/badge/📝_Documentation-Welcome-45B7D1?style=for-the-badge" alt="Documentation"/>
+<img src="https://img.shields.io/badge/💻_Code_Contributions-Welcome-96CEB4?style=for-the-badge" alt="Code Contributions"/>
+
+</div>
+
+### 🛠️ 贡献指南
+
+1. 🍴 Fork 本项目
+2. 🌿 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 💾 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 📤 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 🔄 创建 Pull Request
+
+---
+
+## 📞 联系我们
+
+<div align="center">
+
+### 💬 加入我们的社区
+
+<table>
+<tr>
+<td align="center">
+<img src="images/wechat_qr.jpg" width="150" height="150"/>
+<br/>
+<strong>🐱 微信群聊</strong>
+<br/>
+<em>扫码加群讨论</em>
+</td>
+<td align="center">
+<img src="images/mp_qr.jpg" width="150" height="150"/>
+<br/>
+<strong>📱 公众号</strong>
+<br/>
+<em>获取最新资讯</em>
+</td>
+</tr>
+</table>
+
+<br/>
+
+<img src="https://img.shields.io/badge/📧_Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+<img src="https://img.shields.io/badge/💬_WeChat-Available-07C160?style=for-the-badge&logo=wechat&logoColor=white" alt="WeChat"/>
+<img src="https://img.shields.io/badge/🐛_Issues-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Issues"/>
+
+</div>
+
+---
+
+## 📄 许可证
+
+<div align="center">
+
+本项目采用 **Apache 2.0** 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+
+<br/>
+
+<img src="https://img.shields.io/badge/📜_License-Apache_2.0-4CAF50?style=for-the-badge&logo=apache&logoColor=white" alt="License"/>
+
+<br/><br/>
+
+---
+
+<sub>🌟 Built with ❤️ for Xiaohongshu content creators | 为小红书创作者精心打造</sub>
+
+<br/>
+
+**⭐ 如果这个项目对您有帮助，请给我们一个星标！**
+
 </div>

@@ -168,6 +168,35 @@ class XiaohongshuPoster:
                 window.chrome = {
                     runtime: {}
                 };
+                
+                // 禁用Service Worker注册以避免错误
+                if ('serviceWorker' in navigator) {
+                    const originalRegister = navigator.serviceWorker.register;
+                    navigator.serviceWorker.register = function() {
+                        return Promise.reject(new Error('Service Worker registration disabled'));
+                    };
+                    
+                    // 也可以完全移除serviceWorker
+                    Object.defineProperty(navigator, 'serviceWorker', {
+                        get: () => undefined
+                    });
+                }
+                
+                // 捕获并忽略Service Worker相关错误
+                window.addEventListener('error', function(e) {
+                    if (e.message && e.message.includes('serviceWorker')) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+                
+                // 捕获未处理的Promise拒绝（Service Worker相关）
+                window.addEventListener('unhandledrejection', function(e) {
+                    if (e.reason && e.reason.message && e.reason.message.includes('serviceWorker')) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
             })();
             """
             await self.page.add_init_script(stealth_js)
@@ -408,9 +437,9 @@ class XiaohongshuPoster:
                             await file_chooser.set_files(images)
                             print(f"已通过文件选择器设置文件: {images}")
                             upload_success = True
-                            print("✅ 首选方法成功: 点击 '.upload-button' 并设置文件")
+                            print(" 首选方法成功: 点击 '.upload-button' 并设置文件")
                         except Exception as e:
-                            print(f"❌ 首选方法 (点击 '.upload-button') 失败: {e}")
+                            print(f" 首选方法 (点击 '.upload-button') 失败: {e}")
                             if self.page: await self.page.screenshot(path="debug_upload_button_click_failed.png")
 
                     # --- 方法0.5 (新增): 点击拖拽区域的文字提示区 ---
@@ -433,17 +462,17 @@ class XiaohongshuPoster:
                                     print(f"已通过文件选择器 (点击区域 '{area_selector}') 设置文件: {images}")
                                     upload_success = True
                                     clicked_area_successfully = True
-                                    print(f"✅ 方法0.5成功: 点击区域 '{area_selector}' 并设置文件")
+                                    print(f" 方法0.5成功: 点击区域 '{area_selector}' 并设置文件")
                                     break 
                                 except Exception as inner_e:
                                     print(f"尝试点击区域 '{area_selector}' 失败: {inner_e}")
                             
                             if not clicked_area_successfully: 
-                                print(f"❌ 方法0.5 (点击拖拽提示区域) 所有内部尝试均失败")
+                                print(f" 方法0.5 (点击拖拽提示区域) 所有内部尝试均失败")
                                 if self.page: await self.page.screenshot(path="debug_upload_all_area_clicks_failed.png")
                                 
                         except Exception as e: 
-                            print(f"❌ 方法0.5 (点击拖拽提示区域) 步骤发生意外错误: {e}")
+                            print(f"❌方法0.5 (点击拖拽提示区域) 步骤发生意外错误: {e}")
                             if self.page: await self.page.screenshot(path="debug_upload_method0_5_overall_failure.png")
 
                     # --- 方法1 (备选): 直接操作 .upload-input (使用 set_input_files) ---
@@ -457,9 +486,9 @@ class XiaohongshuPoster:
                             await self.page.set_input_files(input_selector, files=images, timeout=10000)
                             print(f"已通过 set_input_files 为 '{input_selector}' 设置文件: {images}")
                             upload_success = True # 假设 set_input_files 成功即代表文件已选择
-                            print("✅ 方法1成功: 直接通过 set_input_files 操作 '.upload-input'")
+                            print(" 方法1成功: 直接通过 set_input_files 操作 '.upload-input'")
                         except Exception as e:
-                            print(f"❌ 方法1 (set_input_files on '.upload-input') 失败: {e}")
+                            print(f" 方法1 (set_input_files on '.upload-input') 失败: {e}")
                             if self.page: await self.page.screenshot(path="debug_upload_input_set_files_failed.png")
                     
                     # --- 方法3 (备选): JavaScript直接触发隐藏的input点击 ---
@@ -477,9 +506,9 @@ class XiaohongshuPoster:
                             await file_chooser.set_files(images)
                             print(f"已通过文件选择器 (JS点击后) 设置文件: {images}")
                             upload_success = True
-                            print("✅ 方法3成功: JavaScript点击 '.upload-input' 并设置文件")
+                            print(" 方法3成功: JavaScript点击 '.upload-input' 并设置文件")
                         except Exception as e:
-                            print(f"❌ 方法3 (JavaScript点击 '.upload-input') 失败: {e}")
+                            print(f"方法3 (JavaScript点击 '.upload-input') 失败: {e}")
                             if self.page: await self.page.screenshot(path="debug_upload_js_input_click_failed.png")
 
                     # --- 上传后检查 --- 
@@ -522,12 +551,12 @@ class XiaohongshuPoster:
                         upload_check_successful = await self.page.evaluate(upload_check_js)
                         
                         if upload_check_successful:
-                            print("✅ 图片上传并处理成功 (检测到可见的预览元素)")
+                            print(" 图片上传并处理成功 (检测到可见的预览元素)")
                         else:
-                            print("⚠️ 图片可能未成功处理或预览未出现(JS检查失败)，请检查截图")
+                            print(" 图片可能未成功处理或预览未出现(JS检查失败)，请检查截图")
                             if self.page: await self.page.screenshot(path="debug_upload_preview_missing_after_js_check.png")
                     else:
-                        print("❌ 所有主要的图片上传方法均失败。无法进行预览检查。")
+                        print(" 所有主要的图片上传方法均失败。无法进行预览检查。")
                         if self.page: await self.page.screenshot(path="debug_upload_all_methods_failed_final.png")
                         
                 except Exception as e:
@@ -550,8 +579,11 @@ class XiaohongshuPoster:
             # 输入标题
             print("输入标题...")
             try:
-                # 尝试更多可能的标题选择器
+                # 使用具体的标题选择器
                 title_selectors = [
+                    "input.d-text[placeholder='填写标题会有更多赞哦～']",
+                    "input.d-text",
+                    "input[placeholder='填写标题会有更多赞哦～']",
                     "input.title",
                     "[data-placeholder='标题']",
                     "[contenteditable='true']:first-child",

@@ -1,47 +1,76 @@
-altgraph==0.17.4
-attrs==25.3.0
-certifi==2025.1.31
-charset-normalizer==3.4.1
-click==8.1.8
-colorama==0.4.6
-greenlet==3.0.3
-h11==0.14.0
-idna==3.10
-macholib==1.16.3
-markdown-it-py==3.0.0
-mdurl==0.1.2
-outcome==1.3.0.post0
-packaging==24.2
-pillow==11.1.0
-playwright==1.46.0
-pydantic==1.10.13
-pyee==11.1.0
-Pygments==2.19.1
-pyinstaller==6.10.0
-pyinstaller-hooks-contrib==2025.2
-PyQt5==5.15.11
-PyQt5-Qt5==5.15.16
-PyQt5_sip==12.17.0
-PyQt6==6.5.3
-PyQt6-Qt6==6.8.2
-PyQt6_sip==13.10.0
-PySocks==1.7.1
-python-dotenv==1.1.0
-requests==2.32.3
-rich==13.9.4
-rprint==0.0.8
-selenium==4.27.1
-setuptools==75.8.0
-sniffio==1.3.1
-sortedcontainers==2.4.0
-trio==0.29.0
-trio-websocket==0.12.2
-typing_extensions==4.13.0
-undetected-chromedriver==3.5.5
-urllib3==2.3.0
-uvicorn==0.34.0
-webdriver-manager==4.0.1
-websocket-client==1.8.0
-websockets==15.0.1
-wheel==0.45.1
-wsproto==1.2.0
+# GUI框架
+PyQt6>=6.6.0
+
+# Web框架和服务器
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# 异步文件操作
+aiofiles>=23.0.0
+
+# 浏览器自动化
+playwright>=1.46.0
+
+# 图像处理
+Pillow>=11.0.0
+
+# HTTP客户端
+httpx>=0.25.0
+requests>=2.32.0
+
+# 数据处理
+python-multipart>=0.0.6
+
+# 开发和调试
+python-dotenv>=1.0.0
+
+# 数据库相关
+sqlalchemy>=2.0.0
+alembic>=1.12.0
+
+# 颜色处理
+colorama>=0.4.6
+
+# 文本处理和标记
+markdown-it-py>=3.0.0
+rich>=13.9.0
+
+# 系统和进程管理
+PySocks>=1.7.1
+
+# 安装和构建工具
+setuptools>=75.8.0
+packaging>=24.2
+
+# 证书处理
+certifi>=2025.1.31
+
+# 字符编码检测
+charset-normalizer>=3.4.1
+
+# 网络和协议支持
+h11>=0.14.0
+trio>=0.29.0
+trio-websocket>=0.12.2
+sniffio>=1.3.1
+sortedcontainers>=2.4.0
+
+# 开发工具
+click>=8.1.8
+idna>=3.10
+outcome>=1.3.0
+
+# 支付和金融
+Pygments>=2.19.1
+
+# 安装器
+pyinstaller>=6.10.0
+pyinstaller-hooks-contrib>=2025.2
+
+# macOS特定（如果在macOS上运行）
+macholib>=1.16.3; sys_platform == "darwin"
+
+# 测试工具
+pytest>=11.1.0; extra == "test"
+selenium>=4.27.1; extra == "test"

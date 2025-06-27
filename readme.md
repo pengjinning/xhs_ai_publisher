@@ -667,7 +667,3 @@ PUBLISH_CONFIG = {
   <h3 align="center" style="color: white; margin: 0;">🌟 感谢您的关注和支持！🌟</h3>
   <p align="center" style="color: #f0f0f0; margin: 15px 0 0 0;">让我们一起打造更好的内容创作工具</p>
 </div>
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=1000&color=667eea&center=true&vCenter=true&width=600&lines=⚡+Made+with+💖+by+XHS+AI+Publisher+Team+⚡;🚀+Happy+Coding!+🚀" alt="结尾" />
-
-</div>

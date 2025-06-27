@@ -134,9 +134,25 @@ class UserService:
             if not user:
                 raise ValueError(f"用户ID {user_id} 不存在")
             
+            # 检查用户名是否已被其他用户使用
+            if 'username' in kwargs and kwargs['username'] != user.username:
+                existing_user = session.query(User).filter(
+                    and_(User.username == kwargs['username'], User.id != user_id)
+                ).first()
+                if existing_user:
+                    raise ValueError(f"用户名 '{kwargs['username']}' 已存在")
+            
+            # 检查手机号是否已被其他用户使用
+            if 'phone' in kwargs and kwargs['phone'] != user.phone:
+                existing_phone = session.query(User).filter(
+                    and_(User.phone == kwargs['phone'], User.id != user_id)
+                ).first()
+                if existing_phone:
+                    raise ValueError(f"手机号 '{kwargs['phone']}' 已存在")
+            
             # 更新允许的字段
             allowed_fields = [
-                'display_name', 'is_active'
+                'username', 'phone', 'display_name', 'is_active'
             ]
             
             for field, value in kwargs.items():

@@ -5,9 +5,11 @@ from PyQt6.QtWidgets import (
     QLineEdit, QTextEdit, QComboBox, QSpinBox, QCheckBox,
     QGroupBox, QScrollArea, QTabWidget, QTableWidget, 
     QTableWidgetItem, QHeaderView, QMessageBox, QDialog,
-    QFormLayout, QDialogButtonBox, QFrame, QSplitter, QGraphicsDropShadowEffect
+    QFormLayout, QDialogButtonBox, QFrame, QSplitter, QGraphicsDropShadowEffect,
+    QProgressDialog
 )
 from PyQt6.QtGui import QFont, QPalette, QColor, QPixmap, QPainter, QLinearGradient
+from PyQt6.QtWidgets import QApplication
 
 from ..services.user_service import user_service
 from ..services.proxy_service import proxy_service
@@ -382,14 +384,16 @@ class UserManagementPage(QWidget):
             }
             
             #pageTitle {
-                color: #2c3e50;
+                color: #1a1a1a;
                 font-weight: 700;
+                font-size: 24px;
                 text-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
             
             #pageSubtitle {
-                color: #6c757d;
-                font-weight: 400;
+                color: #333333;
+                font-weight: 500;
+                font-size: 14px;
             }
             
             /* 主内容区域 */
@@ -407,9 +411,10 @@ class UserManagementPage(QWidget):
             }
             
             #panelTitle {
-                color: #2c3e50;
+                color: #1a1a1a;
                 padding: 8px 0;
-                font-weight: 600;
+                font-weight: 700;
+                font-size: 18px;
                 text-shadow: 0 1px 2px rgba(0,0,0,0.1);
             }
             
@@ -433,12 +438,15 @@ class UserManagementPage(QWidget):
             #currentUserName {
                 color: white;
                 font-weight: 700;
-                text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                font-size: 16px;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             }
             
             #currentUserPhone, #currentUserStatus {
                 color: rgba(255, 255, 255, 0.95);
-                text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+                font-size: 14px;
+                font-weight: 500;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.2);
             }
             
             /* 搜索框样式 - 现代化设计 */
@@ -449,7 +457,7 @@ class UserManagementPage(QWidget):
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                     stop:0 rgba(255,255,255,0.9), stop:1 rgba(248,249,250,0.8));
                 font-size: 14px;
-                color: #495057;
+                color: #1a1a1a;
                 font-weight: 500;
                 backdrop-filter: blur(10px);
             }
@@ -467,24 +475,25 @@ class UserManagementPage(QWidget):
                     stop:0 rgba(255,255,255,0.95), stop:1 rgba(255,255,255,0.9));
                 border: 1px solid rgba(255,255,255,0.3);
                 border-radius: 15px;
-                gridline-color: rgba(241,243,244,0.5);
+                gridline-color: rgba(200,200,200,0.5);
                 selection-background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(102,126,234,0.15), stop:1 rgba(118,75,162,0.15));
-                alternate-background-color: rgba(248,249,250,0.3);
+                    stop:0 rgba(102,126,234,0.2), stop:1 rgba(118,75,162,0.2));
+                alternate-background-color: rgba(248,249,250,0.5);
                 backdrop-filter: blur(10px);
             }
             
             #userTable::item, #proxyTable::item, #fingerprintTable::item {
                 padding: 12px 8px;
-                border-bottom: 1px solid rgba(241,243,244,0.3);
-                color: #495057;
+                border-bottom: 1px solid rgba(200,200,200,0.3);
+                color: #1a1a1a;
                 font-weight: 500;
+                font-size: 13px;
             }
             
             #userTable::item:selected, #proxyTable::item:selected, #fingerprintTable::item:selected {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(102,126,234,0.2), stop:1 rgba(118,75,162,0.2));
-                color: #2c3e50;
+                    stop:0 rgba(102,126,234,0.3), stop:1 rgba(118,75,162,0.3));
+                color: #1a1a1a;
                 font-weight: 600;
             }
             
@@ -495,10 +504,10 @@ class UserManagementPage(QWidget):
                 border: none;
                 border-bottom: 2px solid rgba(102,126,234,0.3);
                 font-weight: 700;
-                color: #2c3e50;
+                color: #1a1a1a;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
-                font-size: 11px;
+                font-size: 12px;
             }
             
             /* 标签页样式 - 更现代的设计 */
@@ -528,14 +537,15 @@ class UserManagementPage(QWidget):
                 border-top-left-radius: 12px;
                 border-top-right-radius: 12px;
                 font-weight: 600;
-                color: #6c757d;
+                color: #333333;
+                font-size: 14px;
                 backdrop-filter: blur(5px);
             }
             
             #configTabs QTabBar::tab:selected {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                     stop:0 rgba(255,255,255,0.95), stop:1 rgba(255,255,255,0.9));
-                color: #2c3e50;
+                color: #1a1a1a;
                 border-bottom-color: transparent;
                 font-weight: 700;
             }
@@ -543,7 +553,7 @@ class UserManagementPage(QWidget):
             #configTabs QTabBar::tab:hover:!selected {
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                     stop:0 rgba(233,236,239,0.9), stop:1 rgba(248,249,250,0.8));
-                color: #495057;
+                color: #1a1a1a;
             }
             
             /* 按钮样式 - 更精致的渐变和阴影 */
@@ -557,7 +567,7 @@ class UserManagementPage(QWidget):
                 padding: 0 25px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
-                font-size: 11px;
+                font-size: 12px;
             }
             
             #modernButton_primary:hover {
@@ -582,7 +592,7 @@ class UserManagementPage(QWidget):
                 padding: 0 25px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
-                font-size: 11px;
+                font-size: 12px;
             }
             
             #modernButton_secondary:hover {
@@ -601,7 +611,7 @@ class UserManagementPage(QWidget):
                 padding: 0 25px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
-                font-size: 11px;
+                font-size: 12px;
             }
             
             #modernButton_danger:hover {
@@ -620,7 +630,7 @@ class UserManagementPage(QWidget):
                 padding: 0 25px;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
-                font-size: 11px;
+                font-size: 12px;
             }
             
             #modernButton_info:hover {
@@ -643,6 +653,49 @@ class UserManagementPage(QWidget):
             #proxyTab, #fingerprintTab {
                 background: transparent;
                 border-radius: 15px;
+            }
+            
+            /* 标签文本样式 */
+            QLabel {
+                color: #1a1a1a;
+                font-weight: 500;
+                font-size: 13px;
+            }
+            
+            /* 输入框样式 */
+            QLineEdit, QTextEdit, QComboBox, QSpinBox {
+                background: rgba(255,255,255,0.9);
+                border: 2px solid rgba(200,200,200,0.5);
+                border-radius: 8px;
+                padding: 8px 12px;
+                color: #1a1a1a;
+                font-size: 13px;
+                font-weight: 500;
+            }
+            
+            QLineEdit:focus, QTextEdit:focus, QComboBox:focus, QSpinBox:focus {
+                border-color: #667eea;
+                background: rgba(255,255,255,0.95);
+            }
+            
+            /* 复选框样式 */
+            QCheckBox {
+                color: #1a1a1a;
+                font-size: 13px;
+                font-weight: 500;
+            }
+            
+            QCheckBox::indicator {
+                width: 18px;
+                height: 18px;
+                border: 2px solid #667eea;
+                border-radius: 4px;
+                background: rgba(255,255,255,0.9);
+            }
+            
+            QCheckBox::indicator:checked {
+                background: #667eea;
+                image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDQuNUw0LjUgOEwxMSAxIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K);
             }
             
             /* 滚动条美化 */
@@ -889,8 +942,76 @@ class UserManagementPage(QWidget):
     
     def test_proxy(self):
         """测试代理"""
-        # 这里可以实现代理测试功能
-        QMessageBox.information(self, "提示", "代理测试功能开发中...")
+        current_row = self.proxy_table.currentRow()
+        if current_row < 0:
+            QMessageBox.warning(self, "警告", "请先选择代理配置")
+            return
+        
+        proxy_id = self.proxy_table.item(current_row, 0).data(Qt.ItemDataRole.UserRole)
+        proxy_name = self.proxy_table.item(current_row, 0).text()
+        
+        # 显示测试进度对话框
+        progress = QProgressDialog("正在测试代理连接...", "取消", 0, 0, self)
+        progress.setWindowTitle("代理测试")
+        progress.setWindowModality(Qt.WindowModality.WindowModal)
+        progress.show()
+        
+        try:
+            # 创建异步任务来测试代理
+            import asyncio
+            import threading
+            
+            def run_test():
+                try:
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+                    result = loop.run_until_complete(proxy_service.test_proxy_config(proxy_id, timeout=10))
+                    loop.close()
+                    return result
+                except Exception as e:
+                    return {'test_result': False, 'error_message': str(e)}
+            
+            # 在线程中运行测试
+            import concurrent.futures
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(run_test)
+                
+                # 等待测试完成，同时处理UI事件
+                while not future.done():
+                    QApplication.processEvents()
+                    if progress.wasCanceled():
+                        future.cancel()
+                        return
+                    import time
+                    time.sleep(0.1)
+                
+                result = future.result()
+            
+            progress.close()
+            
+            # 显示测试结果
+            if result['test_result']:
+                latency = result.get('latency', 0)
+                QMessageBox.information(
+                    self, "测试成功", 
+                    f"代理 '{proxy_name}' 连接正常！\n延迟: {latency}ms"
+                )
+            else:
+                error_msg = result.get('error_message', '未知错误')
+                QMessageBox.warning(
+                    self, "测试失败", 
+                    f"代理 '{proxy_name}' 连接失败！\n错误: {error_msg}"
+                )
+            
+            # 重新加载代理配置以更新测试结果
+            user_row = self.user_table.currentRow()
+            if user_row >= 0:
+                user_id = self.user_table.item(user_row, 0).data(Qt.ItemDataRole.UserRole)
+                self.load_proxy_configs(user_id)
+                
+        except Exception as e:
+            progress.close()
+            QMessageBox.critical(self, "错误", f"测试代理时发生错误: {str(e)}")
     
     def set_default_proxy(self):
         """设置默认代理"""
@@ -915,7 +1036,45 @@ class UserManagementPage(QWidget):
     
     def edit_proxy(self):
         """编辑代理配置"""
-        QMessageBox.information(self, "提示", "编辑代理功能开发中...")
+        current_row = self.proxy_table.currentRow()
+        if current_row < 0:
+            QMessageBox.warning(self, "警告", "请先选择代理配置")
+            return
+        
+        proxy_id = self.proxy_table.item(current_row, 0).data(Qt.ItemDataRole.UserRole)
+        
+        # 获取现有代理配置
+        proxy_config = proxy_service.get_proxy_config_by_id(proxy_id)
+        if not proxy_config:
+            QMessageBox.critical(self, "错误", "代理配置不存在")
+            return
+        
+        dialog = ProxyDialog(self)
+        dialog.setWindowTitle("编辑代理配置")
+        
+        # 填充现有数据
+        dialog.name_edit.setText(proxy_config.name)
+        dialog.type_combo.setCurrentText(proxy_config.proxy_type)
+        dialog.host_edit.setText(proxy_config.host)
+        dialog.port_spin.setValue(proxy_config.port)
+        if proxy_config.username:
+            dialog.username_edit.setText(proxy_config.username)
+        if proxy_config.password:
+            dialog.password_edit.setText(proxy_config.password)
+        
+        if dialog.exec() == QDialog.DialogCode.Accepted:
+            try:
+                proxy_data = dialog.get_proxy_data()
+                proxy_service.update_proxy_config(proxy_id, **proxy_data)
+                
+                user_row = self.user_table.currentRow()
+                if user_row >= 0:
+                    user_id = self.user_table.item(user_row, 0).data(Qt.ItemDataRole.UserRole)
+                    self.load_proxy_configs(user_id)
+                
+                QMessageBox.information(self, "成功", "代理配置已更新")
+            except Exception as e:
+                QMessageBox.critical(self, "错误", f"更新代理配置失败: {str(e)}")
     
     def delete_proxy(self):
         """删除代理配置"""
@@ -1020,7 +1179,46 @@ class UserManagementPage(QWidget):
     
     def edit_fingerprint(self):
         """编辑浏览器指纹"""
-        QMessageBox.information(self, "提示", "编辑浏览器指纹功能开发中...")
+        current_row = self.fingerprint_table.currentRow()
+        if current_row < 0:
+            QMessageBox.warning(self, "警告", "请先选择浏览器指纹配置")
+            return
+        
+        fingerprint_id = self.fingerprint_table.item(current_row, 0).data(Qt.ItemDataRole.UserRole)
+        
+        # 获取现有浏览器指纹配置
+        fingerprint_config = fingerprint_service.get_fingerprint_by_id(fingerprint_id)
+        if not fingerprint_config:
+            QMessageBox.critical(self, "错误", "浏览器指纹配置不存在")
+            return
+        
+        dialog = FingerprintDialog(self)
+        dialog.setWindowTitle("编辑浏览器指纹")
+        
+        # 填充现有数据
+        dialog.name_edit.setText(fingerprint_config.name)
+        if fingerprint_config.user_agent:
+            dialog.user_agent_edit.setPlainText(fingerprint_config.user_agent)
+        dialog.viewport_width_spin.setValue(fingerprint_config.viewport_width)
+        dialog.viewport_height_spin.setValue(fingerprint_config.viewport_height)
+        if fingerprint_config.platform:
+            dialog.platform_combo.setCurrentText(fingerprint_config.platform)
+        if fingerprint_config.timezone:
+            dialog.timezone_edit.setText(fingerprint_config.timezone)
+        
+        if dialog.exec() == QDialog.DialogCode.Accepted:
+            try:
+                fingerprint_data = dialog.get_fingerprint_data()
+                fingerprint_service.update_fingerprint(fingerprint_id, **fingerprint_data)
+                
+                user_row = self.user_table.currentRow()
+                if user_row >= 0:
+                    user_id = self.user_table.item(user_row, 0).data(Qt.ItemDataRole.UserRole)
+                    self.load_fingerprint_configs(user_id)
+                
+                QMessageBox.information(self, "成功", "浏览器指纹配置已更新")
+            except Exception as e:
+                QMessageBox.critical(self, "错误", f"更新浏览器指纹配置失败: {str(e)}")
     
     def delete_fingerprint(self):
         """删除浏览器指纹"""

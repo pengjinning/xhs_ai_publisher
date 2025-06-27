@@ -1,6 +1,10 @@
-# 🌟 小红书AI发布助手
-
 <div align="center">
+
+# 🌟 小红书AI发布助手 🌟
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&pause=1000&color=FF6B9D&center=true&vCenter=true&width=600&lines=%F0%9F%8C%9F+%E5%B0%8F%E7%BA%A2%E4%B9%A6AI%E5%8F%91%E5%B8%83%E5%8A%A9%E6%89%8B+%F0%9F%8C%9F;%F0%9F%A4%96+%E6%99%BA%E8%83%BD%E5%86%85%E5%AE%B9%E5%88%9B%E4%BD%9C+%F0%9F%A4%96;%F0%9F%9A%80+%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83%E5%B7%A5%E5%85%B7+%F0%9F%9A%80" alt="Typing SVG" />
+
+<br/>
 
 <img src="https://img.shields.io/badge/🐍_Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Version"/>
 <img src="https://img.shields.io/badge/📄_License-Apache_2.0-4CAF50?style=for-the-badge&logo=apache&logoColor=white" alt="License"/>
@@ -12,34 +16,84 @@
 <img src="https://img.shields.io/badge/🎯_Status-Active-28A745?style=flat-square" alt="Status"/>
 <img src="https://img.shields.io/badge/⭐_Stars-Welcome-FFD700?style=flat-square" alt="Stars"/>
 <img src="https://img.shields.io/badge/🤝_Contributors-Welcome-8A2BE2?style=flat-square" alt="Contributors"/>
+<img src="https://img.shields.io/badge/💖_Made_with-Love-FF69B4?style=flat-square" alt="Made with Love"/>
 
 <br/><br/>
 
-<h3>🎨 智能内容创作 • 🤖 AI驱动 • 📱 一键发布</h3>
+<h2>🎨 智能内容创作 • 🤖 AI驱动 • 📱 一键发布</h2>
 
-[🇨🇳 简体中文](./readme.md) | [🇺🇸 English](./readme_en.md)
+<div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
+  <a href="./readme.md">
+    <img src="https://img.shields.io/badge/🇨🇳_简体中文-FF6B6B?style=for-the-badge&logo=china&logoColor=white" alt="简体中文"/>
+  </a>
+  <a href="./readme_en.md">
+    <img src="https://img.shields.io/badge/🇺🇸_English-4ECDC4?style=for-the-badge&logo=united-states&logoColor=white" alt="English"/>
+  </a>
+</div>
 
 <br/>
 
-![软件界面效果](./images/ui.png)
+<img src="https://github.com/user-attachments/assets/73709e6c-3f4c-4a2f-9c4f-5a5b8c9d0e1f" alt="软件界面效果" width="80%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"/>
+
+<br/><br/>
+
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 15px; margin: 20px 0;">
+  <h3 style="color: white; margin: 0;">✨ 让内容创作变得简单而高效 ✨</h3>
+  <p style="color: #f0f0f0; margin: 10px 0 0 0;">基于先进AI技术，为小红书内容创作者提供全流程自动化解决方案</p>
+</div>
 
 </div>
 
 ---
 
+<div align="center">
+
 ## 📖 项目简介
 
-> **小红书AI发布助手** 是一个功能强大的自动化内容创作与发布工具，专为小红书平台的内容创作者量身定制。
+<img src="https://img.shields.io/badge/🎯_专为小红书定制-FF2D92?style=for-the-badge&logo=xiaohongshu&logoColor=white" alt="专为小红书定制"/>
 
-🎯 **核心价值**
-- 🧠 **智能创作**：基于先进AI技术，自动生成高质量内容
-- ⚡ **效率提升**：一键操作，节省90%的发布时间
-- 🎨 **专业品质**：精美界面设计，用户体验极佳
-- 🔧 **功能完整**：从内容生成到发布，全流程自动化
+<br/><br/>
+
+**小红书AI发布助手** 是一个功能强大的自动化内容创作与发布工具，专为小红书平台的内容创作者量身定制。
+
+</div>
+
+<div align="center">
+
+### 🎯 核心价值
+
+<table>
+<tr>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🧠-智能创作-9B59B6?style=for-the-badge" alt="智能创作"/><br/>
+<sub>基于先进AI技术<br/>自动生成高质量内容</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/⚡-效率提升-F39C12?style=for-the-badge" alt="效率提升"/><br/>
+<sub>一键操作<br/>节省90%发布时间</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🎨-专业品质-E74C3C?style=for-the-badge" alt="专业品质"/><br/>
+<sub>精美界面设计<br/>用户体验极佳</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🔧-功能完整-27AE60?style=for-the-badge" alt="功能完整"/><br/>
+<sub>从内容生成到发布<br/>全流程自动化</sub>
+</td>
+</tr>
+</table>
+
+</div>
 
 ---
 
+<div align="center">
+
 ## ✨ 核心功能
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=36BCF7&center=true&vCenter=true&width=500&lines=%E2%9C%A8+%E5%8A%9F%E8%83%BD%E4%B8%B0%E5%AF%8C%EF%BC%8C%E6%93%8D%E4%BD%9C%E7%AE%80%E5%8D%95+%E2%9C%A8" alt="功能介绍" />
+
+</div>
 
 <table>
 <tr>
@@ -86,7 +140,13 @@
 
 ---
 
+<div align="center">
+
 ## 📁 项目架构
+
+<img src="https://img.shields.io/badge/📁_项目结构-整洁清晰-8E44AD?style=for-the-badge" alt="项目结构"/>
+
+</div>
 
 ```
 📦 xhs_ai_publisher/
@@ -111,9 +171,15 @@
 
 ---
 
+<div align="center">
+
 ## 🛠️ 快速开始
 
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=1000&color=FF6B35&center=true&vCenter=true&width=400&lines=%F0%9F%9A%80+%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8+%F0%9F%9A%80" alt="快速开始" />
+
 ### 📋 环境要求
+
+</div>
 
 <div align="center">
 
@@ -126,7 +192,11 @@
 
 </div>
 
+<div align="center">
+
 ### 🚀 安装步骤
+
+</div>
 
 <details>
 <summary>📥 <strong>方式一：源码安装（推荐开发者）</strong></summary>
@@ -186,9 +256,15 @@ python main.py
 
 ---
 
+<div align="center">
+
 ## 📱 使用指南
 
+<img src="https://img.shields.io/badge/📱_使用简单-三步完成-FF6B9D?style=for-the-badge" alt="使用简单"/>
+
 ### 🎯 基础使用流程
+
+</div>
 
 <div align="center">
 
@@ -210,75 +286,92 @@ flowchart LR
 
 </div>
 
+<div align="center">
+
 ### 📝 详细操作步骤
 
-1. **🚀 启动程序**
-   - 运行 `python main.py` 或双击可执行文件
-   - 等待程序加载完成
+<img src="https://img.shields.io/badge/📝_操作简单-六步完成-4CAF50?style=for-the-badge" alt="操作简单"/>
 
-2. **👤 用户管理**
-   - 点击"用户管理"按钮
-   - 添加新用户或切换现有用户
-   - 配置代理和浏览器指纹（可选）
+</div>
 
-3. **📱 账户登录**
-   - 输入手机号码
-   - 接收并输入验证码
-   - 系统自动保存登录状态
+<table>
+<tr>
+<td width="50%">
 
-4. **✍️ 内容创作**
-   - 在主题输入框输入创作主题
-   - 点击"生成内容"按钮
-   - AI自动生成标题和内容
+**1. 🚀 启动程序**
+- 运行 `python main.py` 或双击可执行文件
+- 等待程序加载完成
 
-5. **🖼️ 图片处理**
-   - 系统自动匹配相关图片
-   - 可手动上传自定义图片
-   - 支持多图片批量处理
+**2. 👤 用户管理**
+- 点击"用户管理"按钮
+- 添加新用户或切换现有用户
+- 配置代理和浏览器指纹（可选）
 
-6. **👀 预览发布**
-   - 点击"预览发布"查看效果
-   - 确认内容无误后点击发布
-   - 支持定时发布功能
+**3. 📱 账户登录**
+- 输入手机号码
+- 接收并输入验证码
+- 系统自动保存登录状态
+
+</td>
+<td width="50%">
+
+**4. ✍️ 内容创作**
+- 在主题输入框输入创作主题
+- 点击"生成内容"按钮
+- AI自动生成标题和内容
+
+**5. 🖼️ 图片处理**
+- 系统自动匹配相关图片
+- 可手动上传自定义图片
+- 支持多图片批量处理
+
+**6. 👀 预览发布**
+- 点击"预览发布"查看效果
+- 确认内容无误后点击发布
+- 支持定时发布功能
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 🎨 界面预览
 
-<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=1000&color=E91E63&center=true&vCenter=true&width=400&lines=%F0%9F%8E%A8+%E7%95%8C%E9%9D%A2%E7%BE%8E%E8%A7%82%EF%BC%8C%E4%BD%93%E9%AA%8C%E6%B5%81%E7%95%85+%F0%9F%8E%A8" alt="界面预览" />
 
 <table>
 <tr>
 <td align="center">
-<img src="./images/main_ui.png" width="300"/>
+<img src="https://via.placeholder.com/300x200/667eea/ffffff?text=🏠+主界面" alt="主界面" style="border-radius: 10px;"/>
 <br/>
-<strong>🏠 主界面</strong>
+<img src="https://img.shields.io/badge/🏠-主界面-667eea?style=for-the-badge" alt="主界面"/>
 </td>
 <td align="center">
-<img src="./images/user_management.png" width="300"/>
+<img src="https://via.placeholder.com/300x200/764ba2/ffffff?text=👤+用户管理" alt="用户管理" style="border-radius: 10px;"/>
 <br/>
-<strong>👤 用户管理</strong>
+<img src="https://img.shields.io/badge/👤-用户管理-764ba2?style=for-the-badge" alt="用户管理"/>
 </td>
 </tr>
 <tr>
 <td align="center">
-<img src="./images/content_generation.png" width="300"/>
+<img src="https://via.placeholder.com/300x200/f093fb/ffffff?text=🤖+内容生成" alt="内容生成" style="border-radius: 10px;"/>
 <br/>
-<strong>🤖 内容生成</strong>
+<img src="https://img.shields.io/badge/🤖-内容生成-f093fb?style=for-the-badge" alt="内容生成"/>
 </td>
 <td align="center">
-<img src="./images/publish_preview.png" width="300"/>
+<img src="https://via.placeholder.com/300x200/4facfe/ffffff?text=📤+发布预览" alt="发布预览" style="border-radius: 10px;"/>
 <br/>
-<strong>📤 发布预览</strong>
+<img src="https://img.shields.io/badge/📤-发布预览-4facfe?style=for-the-badge" alt="发布预览"/>
 </td>
 </tr>
 </table>
 
-</div>
-
 ---
 
 ## 🔧 高级配置
+
+<img src="https://img.shields.io/badge/🔧_高级配置-灵活定制-9C27B0?style=for-the-badge" alt="高级配置"/>
 
 ### ⚙️ 配置文件说明
 
@@ -310,111 +403,211 @@ PUBLISH_CONFIG = {
 
 </details>
 
+<div align="center">
+
 ### 🌐 代理配置
-
-支持多种代理类型：
-- 🔗 **HTTP代理**
-- 🔒 **HTTPS代理** 
-- 🧅 **SOCKS5代理**
-- 🏠 **本地代理**
-
----
-
-## 📊 待办事项
-
-<div align="center">
-
-### 🗓️ 开发路线图
-
-</div>
-
-- [x] ✅ **基础功能**：内容生成和发布
-- [x] ✅ **用户管理**：多账户支持
-- [x] ✅ **代理配置**：网络代理支持
-- [ ] 🔄 **内容库**：素材管理系统
-- [ ] 🔄 **模板库**：预设模板系统
-- [ ] 🔄 **数据分析**：发布效果分析
-- [ ] 🔄 **API接口**：开放API接口
-- [ ] 🔄 **移动端**：手机端支持
-
----
-
-## 🤝 参与贡献
-
-<div align="center">
-
-**🎉 我们欢迎所有形式的贡献！**
-
-<img src="https://img.shields.io/badge/🐛_Bug_Reports-Welcome-FF6B6B?style=for-the-badge" alt="Bug Reports"/>
-<img src="https://img.shields.io/badge/💡_Feature_Requests-Welcome-4ECDC4?style=for-the-badge" alt="Feature Requests"/>
-<img src="https://img.shields.io/badge/📝_Documentation-Welcome-45B7D1?style=for-the-badge" alt="Documentation"/>
-<img src="https://img.shields.io/badge/💻_Code_Contributions-Welcome-96CEB4?style=for-the-badge" alt="Code Contributions"/>
-
-</div>
-
-### 🛠️ 贡献指南
-
-1. 🍴 Fork 本项目
-2. 🌿 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 💾 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 📤 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 🔄 创建 Pull Request
-
----
-
-## 📞 联系我们
-
-<div align="center">
-
-### 💬 加入我们的社区
 
 <table>
 <tr>
-<td align="center">
-<img src="images/wechat_qr.jpg" width="150" height="150"/>
-<br/>
-<strong>🐱 微信群聊</strong>
-<br/>
-<em>扫码加群讨论</em>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🔗-HTTP代理-FF5722?style=for-the-badge" alt="HTTP代理"/>
 </td>
-<td align="center">
-<img src="images/mp_qr.jpg" width="150" height="150"/>
-<br/>
-<strong>📱 公众号</strong>
-<br/>
-<em>获取最新资讯</em>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🔒-HTTPS代理-4CAF50?style=for-the-badge" alt="HTTPS代理"/>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🧅-SOCKS5代理-9C27B0?style=for-the-badge" alt="SOCKS5代理"/>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🏠-本地代理-FF9800?style=for-the-badge" alt="本地代理"/>
 </td>
 </tr>
 </table>
 
-<br/>
+</div>
 
-<img src="https://img.shields.io/badge/📧_Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-<img src="https://img.shields.io/badge/💬_WeChat-Available-07C160?style=for-the-badge&logo=wechat&logoColor=white" alt="WeChat"/>
-<img src="https://img.shields.io/badge/🐛_Issues-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Issues"/>
+---
+
+<div align="center">
+
+## 📊 开发路线图
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=1000&color=2196F3&center=true&vCenter=true&width=400&lines=%F0%9F%93%8A+%E6%8C%81%E7%BB%AA%E8%BF%AD%E4%BB%A3%EF%BC%8C%E4%B8%8D%E6%96%AD%E5%AE%8C%E5%96%84+%F0%9F%93%8A" alt="开发路线图" />
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+### ✅ 已完成功能
+- [x] 🎯 **基础功能**：内容生成和发布
+- [x] 👥 **用户管理**：多账户支持
+- [x] 🌐 **代理配置**：网络代理支持
+- [x] 🛡️ **安全防护**：反检测机制
+- [x] 📱 **界面优化**：现代化UI设计
+
+</td>
+<td width="50%">
+
+### 🔄 开发中功能
+- [ ] 📚 **内容库**：素材管理系统
+- [ ] 🎨 **模板库**：预设模板系统
+- [ ] 📊 **数据分析**：发布效果分析
+- [ ] 🔌 **API接口**：开放API接口
+- [ ] 📱 **移动端**：手机端支持
+
+</td>
+</tr>
+</table>
+
+---
+
+<div align="center">
+
+## 🤝 参与贡献
+
+<img src="https://img.shields.io/badge/🤝_贡献代码-欢迎参与-FF6B35?style=for-the-badge" alt="贡献代码"/>
+
+**🎉 我们欢迎所有形式的贡献！**
+
+</div>
+
+<div align="center">
+
+### 🚀 贡献方式
+
+<table>
+<tr>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🐛-Bug修复-E74C3C?style=for-the-badge" alt="Bug修复"/><br/>
+<sub>发现并修复程序错误</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/✨-功能增强-9B59B6?style=for-the-badge" alt="功能增强"/><br/>
+<sub>添加新功能和改进</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/📚-文档完善-3498DB?style=for-the-badge" alt="文档完善"/><br/>
+<sub>完善项目文档</sub>
+</td>
+<td align="center" width="25%">
+<img src="https://img.shields.io/badge/🧪-测试用例-F39C12?style=for-the-badge" alt="测试用例"/><br/>
+<sub>编写测试代码</sub>
+</td>
+</tr>
+</table>
+
+</div>
+
+### 📝 贡献步骤
+
+1. **🍴 Fork 项目**
+   ```bash
+   git clone https://github.com/yourusername/xhs_ai_publisher.git
+   ```
+
+2. **🌿 创建分支**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+3. **💻 提交更改**
+   ```bash
+   git commit -m "✨ Add: 新功能描述"
+   ```
+
+4. **📤 推送分支**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. **🔄 创建 Pull Request**
+
+---
+
+<div align="center">
+
+## 📄 许可证
+
+<img src="https://img.shields.io/badge/📄_开源许可-Apache_2.0-4CAF50?style=for-the-badge&logo=apache&logoColor=white" alt="Apache 2.0"/>
+
+本项目采用 [Apache 2.0](./LICENSE) 许可证
 
 </div>
 
 ---
 
-## 📄 许可证
-
 <div align="center">
 
-本项目采用 **Apache 2.0** 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+## 💖 支持项目
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=FF69B4&center=true&vCenter=true&width=500&lines=%F0%9F%92%96+%E5%A6%82%E6%9E%9C%E8%BF%99%E4%B8%AA%E9%A1%B9%E7%9B%AE%E5%AF%B9%E6%82%A8%E6%9C%89%E5%B8%AE%E5%8A%A9%EF%BC%8C%E8%AF%B7%E7%BB%99%E4%B8%AA%E2%AD%90+%F0%9F%92%96" alt="支持项目" />
 
 <br/>
 
-<img src="https://img.shields.io/badge/📜_License-Apache_2.0-4CAF50?style=for-the-badge&logo=apache&logoColor=white" alt="License"/>
+<a href="https://github.com/yourusername/xhs_ai_publisher">
+<img src="https://img.shields.io/badge/⭐_给个星星-支持项目-FFD700?style=for-the-badge&logo=github&logoColor=white" alt="给个星星"/>
+</a>
 
 <br/><br/>
 
+**💝 您的支持是我们持续开发的动力！**
+
+</div>
+
+<table>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/⭐-点个星星-FFD700?style=flat-square" alt="点个星星"/><br/>
+<sub>GitHub 点星支持</sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/🔄-分享项目-FF6B9D?style=flat-square" alt="分享项目"/><br/>
+<sub>分享给更多人</sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/🐛-反馈问题-E74C3C?style=flat-square" alt="反馈问题"/><br/>
+<sub>提交Issue反馈</sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/💡-提出建议-9B59B6?style=flat-square" alt="提出建议"/><br/>
+<sub>功能建议和改进</sub>
+</td>
+</tr>
+</table>
+
 ---
 
-<sub>🌟 Built with ❤️ for Xiaohongshu content creators | 为小红书创作者精心打造</sub>
+<div align="center">
+
+## 📞 联系我们
+
+<img src="https://img.shields.io/badge/📞_联系方式-随时沟通-36BCF7?style=for-the-badge" alt="联系方式"/>
 
 <br/>
 
-**⭐ 如果这个项目对您有帮助，请给我们一个星标！**
+<a href="mailto:your-email@example.com">
+<img src="https://img.shields.io/badge/📧_邮箱联系-your--email@example.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="邮箱联系"/>
+</a>
+
+<br/>
+
+<a href="https://github.com/yourusername/xhs_ai_publisher/issues">
+<img src="https://img.shields.io/badge/🐛_问题反馈-GitHub_Issues-181717?style=for-the-badge&logo=github&logoColor=white" alt="问题反馈"/>
+</a>
+
+<br/><br/>
+
+**🤝 期待与您的交流合作！**
+
+---
+
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 20px; margin: 30px 0;">
+  <h3 align="center" style="color: white; margin: 0;">🌟 感谢您的关注和支持！🌟</h3>
+  <p align="center" style="color: #f0f0f0; margin: 15px 0 0 0;">让我们一起打造更好的内容创作工具</p>
+</div>
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=1000&color=667eea&center=true&vCenter=true&width=600&lines=⚡+Made+with+💖+by+XHS+AI+Publisher+Team+⚡;🚀+Happy+Coding!+🚀" alt="结尾" />
 
 </div>

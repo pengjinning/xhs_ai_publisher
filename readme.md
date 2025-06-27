@@ -603,13 +603,8 @@ PUBLISH_CONFIG = {
 
 <div align="center">
 
-## 📞 联系我们
 
-<img src="https://img.shields.io/badge/📞_联系方式-随时沟通-36BCF7?style=for-the-badge" alt="联系方式"/>
-
-<br/>
-
-### 💬 多种联系方式
+### 💬 联系方式
 
 <table>
 <tr>
@@ -625,7 +620,7 @@ PUBLISH_CONFIG = {
 <br/><br/>
 <img src="images/mp_qr.jpg" alt="公众号二维码" width="150" style="border-radius: 10px;"/>
 <br/>
-<sub>📢 关注公众号获取最新动态</sub>
+<sub>📢 关注公众号</sub>
 </td>
 <td align="center" width="33%">
 <img src="https://img.shields.io/badge/🐛_问题反馈-GitHub_Issues-181717?style=for-the-badge&logo=github&logoColor=white" alt="问题反馈"/>

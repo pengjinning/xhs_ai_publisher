@@ -39,7 +39,7 @@
 
 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 15px; margin: 20px 0;">
   <h3 style="color: white; margin: 0;">✨ 让内容创作变得简单而高效 ✨</h3>
-  <p style="color: #f0f0f0; margin: 10px 0 0 0;">基于先进AI技术，为小红书内容创作者提供全流程自动化解决方案</p>
+  <p style="color: #f0f0f0; margin: 10px 0 0 0;">基于先进AI技术，为内容创作者提供全流程自动化解决方案</p>
 </div>
 
 </div>
@@ -50,11 +50,11 @@
 
 ## 📖 项目简介
 
-<img src="https://img.shields.io/badge/🎯_专为小红书定制-FF2D92?style=for-the-badge&logo=xiaohongshu&logoColor=white" alt="专为小红书定制"/>
+<img src="https://img.shields.io/badge/🎯_智能发布工具-FF2D92?style=for-the-badge&logo=rocket&logoColor=white" alt="智能发布工具"/>
 
 <br/><br/>
 
-**小红书AI发布助手** 是一个功能强大的自动化内容创作与发布工具，专为小红书平台的内容创作者量身定制。
+**小红书AI发布助手** 是一个功能强大的自动化内容创作与发布工具，为内容创作者提供全流程自动化解决方案。
 
 </div>
 

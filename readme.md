@@ -33,7 +33,7 @@
 
 <br/>
 
-<img src="https://github.com/user-attachments/assets/73709e6c-3f4c-4a2f-9c4f-5a5b8c9d0e1f" alt="软件界面效果" width="80%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"/>
+<img src="./images/ui.png" alt="软件界面效果" width="80%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"/>
 
 <br/><br/>
 
@@ -347,14 +347,14 @@ flowchart LR
 <table>
 <tr>
 <td align="center">
-<img src="https://github.com/user-attachments/assets/main-interface.png" alt="主界面" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+<img src="./images/main_ui.png" alt="主界面" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 <br/>
 <img src="https://img.shields.io/badge/🏠-主界面-667eea?style=for-the-badge" alt="主界面"/>
 <br/>
 <sub>💡 简洁直观的主操作界面</sub>
 </td>
 <td align="center">
-<img src="https://github.com/user-attachments/assets/user-management.png" alt="用户管理" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+<img src="./images/user_management.png" alt="用户管理" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 <br/>
 <img src="https://img.shields.io/badge/👤-用户管理-764ba2?style=for-the-badge" alt="用户管理"/>
 <br/>
@@ -363,14 +363,14 @@ flowchart LR
 </tr>
 <tr>
 <td align="center">
-<img src="https://github.com/user-attachments/assets/content-generation.png" alt="内容生成" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+<img src="./images/content_generation.png" alt="内容生成" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 <br/>
 <img src="https://img.shields.io/badge/🤖-内容生成-f093fb?style=for-the-badge" alt="内容生成"/>
 <br/>
 <sub>🎯 AI智能内容创作</sub>
 </td>
 <td align="center">
-<img src="https://github.com/user-attachments/assets/publish-preview.png" alt="发布预览" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+<img src="./images/publish_preview.png" alt="发布预览" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 <br/>
 <img src="https://img.shields.io/badge/📤-发布预览-4facfe?style=for-the-badge" alt="发布预览"/>
 <br/>
@@ -381,7 +381,7 @@ flowchart LR
 
 ### 🎬 软件演示
 
-<img src="https://github.com/user-attachments/assets/software-demo.gif" alt="软件演示" width="80%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"/>
+<img src="./images/software_demo.gif" alt="软件演示" width="80%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"/>
 
 <br/>
 
@@ -616,14 +616,14 @@ PUBLISH_CONFIG = {
 <td align="center" width="33%">
 <img src="https://img.shields.io/badge/💬_微信-扫码添加-07C160?style=for-the-badge&logo=wechat&logoColor=white" alt="微信联系"/>
 <br/><br/>
-<img src="https://github.com/user-attachments/assets/wechat-qr.png" alt="微信二维码" width="150" style="border-radius: 10px;"/>
+<img src="images/wechat_qr.jpg" alt="微信二维码" width="150" style="border-radius: 10px;"/>
 <br/>
 <sub>🔍 扫码添加微信好友</sub>
 </td>
 <td align="center" width="33%">
 <img src="https://img.shields.io/badge/📱_公众号-关注获取更新-FF6B35?style=for-the-badge&logo=wechat&logoColor=white" alt="公众号"/>
 <br/><br/>
-<img src="https://github.com/user-attachments/assets/wechat-official.png" alt="公众号二维码" width="150" style="border-radius: 10px;"/>
+<img src="images/mp_qr.jpg" alt="公众号二维码" width="150" style="border-radius: 10px;"/>
 <br/>
 <sub>📢 关注公众号获取最新动态</sub>
 </td>
@@ -641,11 +641,7 @@ PUBLISH_CONFIG = {
 
 <br/>
 
-### 🤝 交流群组
 
-<div align="center">
-
-<img src="https://img.shields.io/badge/👥_QQ交流群-点击加入-12B7F5?style=for-the-badge&logo=tencentqq&logoColor=white" alt="QQ交流群"/>
 
 <br/>
 

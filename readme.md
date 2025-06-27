@@ -340,32 +340,54 @@ flowchart LR
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=1000&color=E91E63&center=true&vCenter=true&width=400&lines=%F0%9F%8E%A8+%E7%95%8C%E9%9D%A2%E7%BE%8E%E8%A7%82%EF%BC%8C%E4%BD%93%E9%AA%8C%E6%B5%81%E7%95%85+%F0%9F%8E%A8" alt="界面预览" />
 
+<div align="center">
+
+### 📱 主要界面展示
+
 <table>
 <tr>
 <td align="center">
-<img src="https://via.placeholder.com/300x200/667eea/ffffff?text=🏠+主界面" alt="主界面" style="border-radius: 10px;"/>
+<img src="https://github.com/user-attachments/assets/main-interface.png" alt="主界面" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 <br/>
 <img src="https://img.shields.io/badge/🏠-主界面-667eea?style=for-the-badge" alt="主界面"/>
+<br/>
+<sub>💡 简洁直观的主操作界面</sub>
 </td>
 <td align="center">
-<img src="https://via.placeholder.com/300x200/764ba2/ffffff?text=👤+用户管理" alt="用户管理" style="border-radius: 10px;"/>
+<img src="https://github.com/user-attachments/assets/user-management.png" alt="用户管理" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 <br/>
 <img src="https://img.shields.io/badge/👤-用户管理-764ba2?style=for-the-badge" alt="用户管理"/>
+<br/>
+<sub>👥 多账户管理，代理配置</sub>
 </td>
 </tr>
 <tr>
 <td align="center">
-<img src="https://via.placeholder.com/300x200/f093fb/ffffff?text=🤖+内容生成" alt="内容生成" style="border-radius: 10px;"/>
+<img src="https://github.com/user-attachments/assets/content-generation.png" alt="内容生成" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 <br/>
 <img src="https://img.shields.io/badge/🤖-内容生成-f093fb?style=for-the-badge" alt="内容生成"/>
+<br/>
+<sub>🎯 AI智能内容创作</sub>
 </td>
 <td align="center">
-<img src="https://via.placeholder.com/300x200/4facfe/ffffff?text=📤+发布预览" alt="发布预览" style="border-radius: 10px;"/>
+<img src="https://github.com/user-attachments/assets/publish-preview.png" alt="发布预览" width="300" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 <br/>
 <img src="https://img.shields.io/badge/📤-发布预览-4facfe?style=for-the-badge" alt="发布预览"/>
+<br/>
+<sub>👀 发布前预览效果</sub>
 </td>
 </tr>
 </table>
+
+### 🎬 软件演示
+
+<img src="https://github.com/user-attachments/assets/software-demo.gif" alt="软件演示" width="80%" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);"/>
+
+<br/>
+
+**✨ 完整的操作流程演示，从登录到发布一气呵成**
+
+</div>
 
 ---
 
@@ -587,17 +609,59 @@ PUBLISH_CONFIG = {
 
 <br/>
 
-<a href="mailto:your-email@example.com">
-<img src="https://img.shields.io/badge/📧_邮箱联系-your--email@example.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="邮箱联系"/>
+### 💬 多种联系方式
+
+<table>
+<tr>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/💬_微信-扫码添加-07C160?style=for-the-badge&logo=wechat&logoColor=white" alt="微信联系"/>
+<br/><br/>
+<img src="https://github.com/user-attachments/assets/wechat-qr.png" alt="微信二维码" width="150" style="border-radius: 10px;"/>
+<br/>
+<sub>🔍 扫码添加微信好友</sub>
+</td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/📱_公众号-关注获取更新-FF6B35?style=for-the-badge&logo=wechat&logoColor=white" alt="公众号"/>
+<br/><br/>
+<img src="https://github.com/user-attachments/assets/wechat-official.png" alt="公众号二维码" width="150" style="border-radius: 10px;"/>
+<br/>
+<sub>📢 关注公众号获取最新动态</sub>
+</td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/🐛_问题反馈-GitHub_Issues-181717?style=for-the-badge&logo=github&logoColor=white" alt="问题反馈"/>
+<br/><br/>
+<a href="https://github.com/yourusername/xhs_ai_publisher/issues">
+<img src="https://img.shields.io/badge/📝-提交Issue-181717?style=flat-square&logo=github" alt="提交Issue" width="120"/>
 </a>
+<br/>
+<sub>🔧 技术问题和Bug反馈</sub>
+</td>
+</tr>
+</table>
 
 <br/>
 
-<a href="https://github.com/yourusername/xhs_ai_publisher/issues">
-<img src="https://img.shields.io/badge/🐛_问题反馈-GitHub_Issues-181717?style=for-the-badge&logo=github&logoColor=white" alt="问题反馈"/>
-</a>
+### 🤝 交流群组
 
-<br/><br/>
+<div align="center">
+
+<img src="https://img.shields.io/badge/👥_QQ交流群-点击加入-12B7F5?style=for-the-badge&logo=tencentqq&logoColor=white" alt="QQ交流群"/>
+
+<br/>
+
+**群号：123456789**
+
+<br/>
+
+🎯 **在这里您可以：**
+- 💡 获取使用技巧和最佳实践
+- 🐛 反馈问题并获得快速解答  
+- 🚀 第一时间了解新功能更新
+- 🤝 与其他用户交流经验心得
+
+</div>
+
+<br/>
 
 **🤝 期待与您的交流合作！**
 

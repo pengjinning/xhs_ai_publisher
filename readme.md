@@ -1,5 +1,3 @@
-# 🌟 小红书AI发布助手
-
 <div align="center">
 
 <h1>🌟 小红书AI发布助手</h1>
@@ -238,42 +236,7 @@ flowchart LR
    - 确认内容无误后点击发布
    - 支持定时发布功能
 
----
 
-## 🎨 界面预览
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center">
-<img src="./images/main_ui.png" width="300"/>
-<br/>
-<strong>🏠 主界面</strong>
-</td>
-<td align="center">
-<img src="./images/user_management.png" width="300"/>
-<br/>
-<strong>👤 用户管理</strong>
-</td>
-</tr>
-<tr>
-<td align="center">
-<img src="./images/content_generation.png" width="300"/>
-<br/>
-<strong>🤖 内容生成</strong>
-</td>
-<td align="center">
-<img src="./images/publish_preview.png" width="300"/>
-<br/>
-<strong>📤 发布预览</strong>
-</td>
-</tr>
-</table>
-
-</div>
-
----
 
 ## 🔧 高级配置
 
